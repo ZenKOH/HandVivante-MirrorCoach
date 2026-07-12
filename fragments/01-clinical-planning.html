@@ -1,0 +1,50 @@
+<section class="tab-panel" hidden="" id="patients">
+<div class="two-column">
+<section class="panel">
+<div class="section-heading"><p class="eyebrow">Eligibility &amp; profile</p><h2>Patient record</h2><p>Use pseudonymous labels in this public build.</p></div>
+<form id="patientForm">
+<input id="patientId" type="hidden"/>
+<label>Case label<input id="patientLabel" maxlength="70" placeholder="e.g. Case 04 · Right hemiparesis" required="" type="text"/></label>
+<div class="grid-2"><label>Condition<select id="patientCondition"><option>Stroke</option><option>Acquired brain injury / TBI</option><option>Incomplete spinal cord injury</option><option>Other clinician-approved pathway</option></select></label><label>Phase<select id="patientPhase"><option>Subacute</option><option>Chronic</option><option>Inpatient rehabilitation</option><option>Outpatient</option><option>Supervised home programme</option></select></label></div>
+<div class="grid-3"><label>Brunnstrom arm<input id="patientBrunnstrom" max="6" min="1" required="" type="number" value="3"/></label><label>Finger flexor MAS<select id="patientMas"><option value="0">0</option><option value="1">1</option><option selected="" value="1+">1+</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label><label>MMSE / equivalent<input id="patientMmse" max="30" min="0" type="number" value="27"/></label></div>
+<div class="grid-2"><label>FMA-UE<input id="patientFma" max="66" min="0" type="number" value="28"/></label><label>ARAT<input id="patientArat" max="57" min="0" type="number" value="14"/></label></div>
+<div class="grid-2"><label>Baseline pain (0-10)<input id="patientPain" max="10" min="0" type="number" value="1"/></label><label>Skin integrity<select id="patientSkin"><option>Intact</option><option>Requires clinician review</option><option>Not suitable today</option></select></label></div>
+<label>Primary functional goal<textarea id="patientGoal" placeholder="e.g. Use the affected hand to stabilise a cup during breakfast" required="" rows="3"></textarea></label>
+<label>Precautions / boundaries<textarea id="patientPrecautions" placeholder="e.g. protect shoulder; monitor tone and hand skin" rows="3"></textarea></label>
+<fieldset class="eligibility-box"><legend>Eligibility verification</legend>
+<label class="check-row"><input id="eligStable" type="checkbox"/><span>Physiological condition is stable</span></label>
+<label class="check-row"><input id="eligMsk" type="checkbox"/><span>No contraindicating fracture, tendon rupture, fixed contracture, or other clinician-identified mechanical restriction</span></label>
+<label class="check-row"><input id="eligSkin" type="checkbox"/><span>No pressure injury, open wound, cellulitis, or unsafe contact-area skin problem</span></label>
+<label class="check-row"><input id="eligCognition" type="checkbox"/><span>Able to understand and follow the session or has an approved supported pathway</span></label>
+</fieldset>
+<div class="eligibility-summary" id="eligibilitySummary"></div>
+<button class="primary" type="submit">Save patient record</button>
+</form>
+</section>
+<section class="panel">
+<div class="section-heading inline"><div><h2>Caseload</h2><p>Eligibility remains a clinician decision.</p></div><button class="secondary mini" id="newPatientBtn" type="button">New record</button></div>
+<div class="cards-list" id="patientCards"></div>
+</section>
+</div>
+</section>
+<section class="tab-panel" hidden="" id="prescribe">
+<div class="two-column">
+<section class="panel">
+<div class="section-heading"><p class="eyebrow">Clinician-controlled</p><h2>RMHT protocol builder</h2><p>Create a four-week prescription. Suggestions are rule-based and require clinician approval.</p></div>
+<form id="protocolForm">
+<label>Patient<select id="protocolPatient" required=""></select></label>
+<div class="grid-2"><label>Pathway<select id="protocolPathway"><option value="severe">Severe impairment · passive-follow</option><option selected="" value="moderate">Moderate impairment · active-assist</option><option value="mild">Mild impairment · reduced assistance</option></select></label><label>Setting<select id="protocolSetting"><option>Supervised clinic</option><option>Inpatient rehabilitation</option><option>Supervised home-based care</option></select></label></div>
+<div class="grid-3"><label>Sessions / week<input id="protocolFrequency" max="7" min="1" type="number" value="5"/></label><label>Session minutes<input id="protocolMinutes" max="60" min="15" type="number" value="30"/></label><label>Block weeks<input id="protocolWeeks" max="12" min="1" type="number" value="4"/></label></div>
+<div class="grid-2"><label>Movement family 1<select id="protocolFamily1"></select></label><label>Movement family 2<select id="protocolFamily2"></select></label></div>
+<div class="grid-3"><label>Starting range<select id="protocolRange"><option>Comfort-limited 40-50%</option><option selected="">Comfort-limited 50-70%</option><option>Clinician-defined functional range</option></select></label><label>Starting speed<select id="protocolSpeed"><option selected="">Slow</option><option>Slow-moderate</option><option>Moderate</option></select></label><label>Volitional demand<select id="protocolDemand"><option>Passive-follow + imagery</option><option selected="">Attempt-to-move + active-assist</option><option>Reduced assistance / active</option></select></label></div>
+<label>Progression gate<textarea id="protocolGate" rows="3">Finger-flexor MAS remains ≤1+ for two consecutive sessions; pain does not rise &gt;2 points; no skin or device safety event; ≥80% prescribed cycles completed.</textarea></label>
+<label>Functional transfer target<textarea id="protocolTransfer" rows="2">Affected hand stabilises a lightweight cup for 3 seconds, 3 attempts after device removal.</textarea></label>
+<button class="primary" type="submit">Save prescription</button>
+</form>
+</section>
+<section class="panel sticky-panel">
+<div class="section-heading"><h2>Generated four-week pathway</h2><p>Range and tolerance progress before complexity and reduced assistance.</p></div>
+<div id="protocolPreview"></div>
+</section>
+</div>
+</section>
