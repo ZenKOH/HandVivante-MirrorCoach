@@ -1,0 +1,99 @@
+<section aria-labelledby="loginTitle" class="login-shell" id="loginView">
+<div class="login-copy">
+<div class="brand-row">
+<img alt="" class="brand-mark" src="assets/brand-mark.svg"/>
+<div><p class="eyebrow">Clinical training prototype</p><h1 id="loginTitle">HandVivante™<br/><span>MirrorCoach</span></h1></div>
+</div>
+<p class="hero-copy">A clinician-prescribed workspace for Robotic Mirror Hand Therapy: assessment, tutorial, operating guidance, session delivery, functional practice, outcomes, and research-quality documentation.</p>
+<div aria-label="Three-part RMHT mechanism" class="mechanism-strip">
+<article><strong>01</strong><span>Mirror visual feedback</span></article>
+<article><strong>02</strong><span>Synchronous robotic movement</span></article>
+<article><strong>03</strong><span>Intent and attention coaching</span></article>
+</div>
+<p class="clinical-note">This public build is an education and workflow prototype. It does not connect to a medical device, provide medical advice, or replace the official device instructions for use, local governance, or licensed clinical judgement.</p>
+</div>
+<div class="login-card panel">
+<img alt="HandVivante robotic hand, sensor glove and control unit" class="login-product" src="assets/product-hero.svg"/>
+<div class="section-heading"><p class="eyebrow">Demo access</p><h2>Enter the MirrorCoach workspace</h2><p>No server account is created. Your demo profile and records stay in this browser.</p></div>
+<form id="loginForm">
+<label>Display name<input autocomplete="name" id="loginName" maxlength="60" required="" type="text" value="Demo Clinician"/></label>
+<label>Role<select id="loginRole" required="">
+<option value="clinician">Clinician</option>
+<option value="patient">Patient / caregiver</option>
+<option value="researcher">Researcher</option>
+<option value="admin">Clinic administrator</option>
+</select></label>
+<label>Organisation / site<input id="loginOrg" maxlength="80" type="text" value="MirrorCoach Demonstration Site"/></label>
+<label class="check-row"><input id="loginConsent" required="" type="checkbox"/><span>I understand this is a non-clinical prototype using synthetic data.</span></label>
+<button class="primary" type="submit">Enter workspace</button>
+</form>
+<p class="privacy-mini">Do not enter directly identifiable patient information into the public GitHub Pages version.</p>
+</div>
+</section>
+<header class="app-header">
+<div class="app-brand">
+<img alt="" class="brand-mark small" src="assets/brand-mark.svg"/>
+<div><p class="eyebrow">Robotic Mirror Hand Therapy</p><h1>HandVivante™ MirrorCoach</h1><p class="subtitle">Clinical implementation, therapist training, guided protocols, functional transfer, and research documentation.</p></div>
+</div>
+<div class="header-actions">
+<div class="user-chip"><span id="userInitials">DC</span><div><strong id="userName">Demo Clinician</strong><small id="userMeta">Clinician · Demonstration Site</small></div></div>
+<button class="secondary" id="loadDemoBtn" type="button">Reload synthetic demo</button>
+<button class="secondary" id="exportJsonBtn" type="button">Export JSON</button>
+<button class="danger ghost" id="logoutBtn" type="button">Sign out</button>
+</div>
+</header>
+<nav aria-label="MirrorCoach sections" class="tab-nav" id="tabNav">
+<button class="tab-button active" data-roles="clinician,patient,researcher,admin" data-tab="dashboard">Dashboard</button>
+<button class="tab-button" data-roles="clinician,researcher,admin" data-tab="patients">Patients</button>
+<button class="tab-button" data-roles="clinician,admin" data-tab="prescribe">Protocol Builder</button>
+<button class="tab-button" data-roles="clinician,patient,admin" data-tab="session">Guided Session</button>
+<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="exercises">Exercises</button>
+<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="tutorial">Tutorial</button>
+<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="manual">Operating Manual</button>
+<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="outcomes">Outcomes</button>
+<button class="tab-button" data-roles="clinician,researcher,admin" data-tab="research">Research</button>
+<button class="tab-button" data-roles="clinician,admin" data-tab="settings">Settings</button>
+</nav>
+<div aria-live="polite" class="app-status" id="appStatus" role="status"></div>
+<main class="app-shell">
+<section class="tab-panel active" id="dashboard">
+<section class="hero-panel panel">
+<div>
+<p class="eyebrow">Recovery command centre</p>
+<h2>Turn synchronised practice into documented clinical evidence.</h2>
+<p>MirrorCoach connects eligibility, prescription, safe delivery, repetition dose, functional transfer, outcomes, and therapist review. Device control is simulated in this public prototype.</p>
+<div class="hero-buttons"><button class="primary compact" data-go="session">Start guided session</button><button class="secondary compact" data-go="tutorial">Open product tutorial</button></div>
+</div>
+<img alt="HandVivante system components" src="assets/product-hero.svg"/>
+</section>
+<section aria-label="Key programme indicators" class="stats-grid">
+<article class="stat-card"><span>Active RMHT minutes</span><strong id="statMinutes">0</strong><small>Current 7-day window</small></article>
+<article class="stat-card"><span>Movement cycles</span><strong id="statReps">0</strong><small>Documented this week</small></article>
+<article class="stat-card"><span>Sessions completed</span><strong id="statSessions">0</strong><small>Across current caseload</small></article>
+<article class="stat-card"><span>Safety review flags</span><strong id="statFlags">0</strong><small>Rule-based prompts only</small></article>
+</section>
+<section class="dashboard-grid">
+<article class="panel wide">
+<div class="section-heading inline"><div><h2>Weekly dose attainment</h2><p>Active practice minutes against each clinician-set target.</p></div><select aria-label="Filter dashboard by patient" id="dashboardPatientFilter"></select></div>
+<div class="dose-chart" id="doseChart"></div>
+</article>
+<article class="panel">
+<div class="section-heading"><h2>Current session architecture</h2><p>Standard 30-minute RMHT workflow.</p></div>
+<ol class="architecture-list">
+<li><b>3 min</b><span>Safety &amp; readiness</span></li>
+<li><b>4 min</b><span>Calibration &amp; familiarisation</span></li>
+<li><b>5 min</b><span>Sensorimotor priming</span></li>
+<li><b>15 min</b><span>Two high-repetition task blocks</span></li>
+<li><b>3 min</b><span>Functional transfer &amp; cooldown</span></li>
+</ol>
+</article>
+<article class="panel">
+<div class="section-heading"><h2>Clinical review prompts</h2><p>Explainable rules for clinician attention.</p></div>
+<div class="prompt-list" id="reviewPrompts"></div>
+</article>
+<article class="panel wide">
+<div class="section-heading"><h2>Caseload snapshot</h2><p>Synthetic records only. Formal scale content is not reproduced.</p></div>
+<div class="table-wrap"><table><thead><tr><th>Case</th><th>Pathway</th><th>Brunnstrom</th><th>MAS</th><th>FMA-UE</th><th>ARAT</th><th>Adherence</th><th>Status</th></tr></thead><tbody id="dashboardPatientTable"></tbody></table></div>
+</article>
+</section>
+</section>
