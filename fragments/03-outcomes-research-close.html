@@ -1,0 +1,35 @@
+<section class="tab-panel" hidden="" id="outcomes">
+<div class="two-column">
+<section class="panel">
+<div class="section-heading"><p class="eyebrow">ICF-aligned measurement</p><h2>Outcome record</h2><p>Record scores only; consult the authorised instrument and local scoring guidance.</p></div>
+<form id="outcomeForm">
+<label>Patient<select id="outcomePatient"></select></label>
+<label>Measure<select id="outcomeMeasure"><option>FMA-UE</option><option>ARAT</option><option>Box and Block Test</option><option>Motor Activity Log</option><option>Patient-specific functional goal</option><option>Pain rating</option><option>Other approved measure</option></select></label>
+<div class="grid-3"><label>Baseline<input id="outcomeBaseline" step="any" type="number"/></label><label>Current<input id="outcomeCurrent" step="any" type="number"/></label><label>Target<input id="outcomeTarget" step="any" type="number"/></label></div>
+<div class="grid-2"><label>Date<input id="outcomeDate" type="date"/></label><label>Direction<select id="outcomeDirection"><option>Higher is better</option><option>Lower is better</option><option>Goal-specific</option></select></label></div>
+<label>Context / note<textarea id="outcomeNote" placeholder="Measurement conditions, cueing, device, assessor, caveats" rows="3"></textarea></label>
+<button class="primary" type="submit">Save outcome</button>
+</form>
+</section>
+<section class="panel"><div class="section-heading"><h2>Functional trajectory</h2><p>Visualises recorded values without interpreting clinical significance.</p></div><div class="outcome-visuals" id="outcomeVisuals"></div><div class="cards-list" id="outcomeList"></div></section>
+</div>
+</section>
+<section class="tab-panel" hidden="" id="research">
+<section class="research-grid">
+<article class="panel"><p class="eyebrow">Protocol fidelity</p><h2>Study-ready session fields</h2><div class="metric-list" id="fidelitySummary"></div></article>
+<article class="panel"><p class="eyebrow">Safety register</p><h2>Adverse event / deviation log</h2><form id="eventForm"><label>Patient<select id="eventPatient"></select></label><div class="grid-2"><label>Type<select id="eventType"><option>Protocol deviation</option><option>Pain escalation</option><option>Skin event</option><option>Tone / clonus event</option><option>Device synchronisation fault</option><option>Other safety observation</option></select></label><label>Severity<select id="eventSeverity"><option>Informational</option><option>Minor</option><option>Moderate</option><option>Serious - escalate per local policy</option></select></label></div><label>Description<textarea id="eventDescription" required="" rows="3"></textarea></label><button class="primary" type="submit">Add event</button></form></article>
+<article class="panel wide"><div class="section-heading inline"><div><h2>Research data register</h2><p>Pseudonymous prototype export for feasibility and workflow testing.</p></div><button class="secondary" id="exportCsvBtn" type="button">Export session CSV</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Case</th><th>Minutes</th><th>Cycles</th><th>Pain pre/post</th><th>Mirror gaze</th><th>Transfer</th><th>Deviation</th></tr></thead><tbody id="researchTable"></tbody></table></div></article>
+</section>
+</section>
+<section class="tab-panel" hidden="" id="settings">
+<div class="two-column">
+<section class="panel"><div class="section-heading"><h2>Prototype settings</h2><p>These settings affect only this browser.</p></div><label>Clinic display name<input id="settingsOrg" type="text"/></label><label>Default review threshold for pain<input id="settingsPain" max="10" min="1" type="number" value="4"/></label><label class="check-row"><input id="settingsAudio" type="checkbox"/><span>Enable short audio phase cues when supported</span></label><button class="primary" id="saveSettingsBtn" type="button">Save settings</button></section>
+<section class="panel"><div class="section-heading"><h2>Data controls</h2><p>Static GitHub Pages storage uses browser localStorage; it is not suitable for identifiable clinical records.</p></div><button class="secondary full" id="backupBtn" type="button">Download complete backup</button><label class="file-button secondary full" tabindex="0">Restore JSON<input accept="application/json,.json" id="restoreInput" type="file"/></label><button class="danger full" id="clearDataBtn" type="button">Erase local prototype data</button><div class="governance-box"><strong>Production requirements</strong><p>Real deployment requires authenticated backend services, encryption, audit logging, access control, consent and retention policies, validated device integration, cybersecurity controls, and regulatory review.</p></div></section>
+</div>
+</section>
+</main>
+<footer>
+<p><strong>HandVivante™ MirrorCoach</strong> · Static clinical workflow prototype · Synthetic data only · Not a medical device · © Robotimize / project contributors.</p>
+</footer>
+</div>
+<dialog id="exerciseDialog"><button aria-label="Close exercise details" class="dialog-close" id="closeExerciseDialog">×</button><div id="exerciseDialogContent"></div></dialog>
