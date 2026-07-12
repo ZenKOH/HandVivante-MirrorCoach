@@ -79,15 +79,9 @@ The operating manual deliberately avoids inventing device-specific force limits,
 ```text
 .
 ├── index.html
-├── styles.css
-├── js/
-│   ├── 01-content.js
-│   ├── 02-core.js
-│   ├── 03-patients-protocols.js
-│   ├── 04-session.js
-│   ├── 05-library-tutorial.js
-│   ├── 06-manual-outcomes-research.js
-│   └── 07-init.js
+├── css/                  # split responsive design system
+├── fragments/            # lazily assembled interface sections
+├── js/                   # boot loader, clinical content, and workflows
 ├── manifest.webmanifest
 ├── sw.js
 ├── assets/
