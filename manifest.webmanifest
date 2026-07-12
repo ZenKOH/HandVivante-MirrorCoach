@@ -1,0 +1,12 @@
+{
+  "name": "HandVivante MirrorCoach",
+  "short_name": "MirrorCoach",
+  "description": "Clinical workflow prototype for Robotic Mirror Hand Therapy, training, guided protocols, functional exercises and research documentation.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c0914",
+  "theme_color": "#120f20",
+  "icons": [
+    { "src": "assets/brand-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
