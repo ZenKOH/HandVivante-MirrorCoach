@@ -35,14 +35,14 @@ function renderTutorial() {
   renderTutorialSteps();
   $('tutorialContent').innerHTML = tutorialContent(TUTORIAL_STEPS[tutorialIndex]);
   $('tutorialPrevBtn').disabled = tutorialIndex === 0;
-  $('tutorialNextBtn').textContent = tutorialIndex === TUTORIAL_STEPS.length - 1 ? 'Finish tutorial' : 'Mark complete & next';
+  $('tutorialNextBtn').textContent = tutorialIndex === TUTORIAL_STEPS.length - 1 ? 'Score the competency check below' : 'Mark complete & next';
+  $('tutorialNextBtn').disabled = tutorialIndex === TUTORIAL_STEPS.length - 1;
 }
 
 function completeTutorialStep() {
+  if (tutorialIndex === TUTORIAL_STEPS.length - 1) return showStatus('Complete and pass the competency check to finish the tutorial.', 'error');
   const completed = new Set(state.tutorial.completed || []); completed.add(tutorialIndex); state.tutorial.completed = [...completed]; saveState();
-  if (tutorialIndex < TUTORIAL_STEPS.length - 1) tutorialIndex++;
-  else showStatus('Tutorial progress saved. Complete the competency check for local sign-off.');
-  renderTutorial();
+  tutorialIndex++; renderTutorial();
 }
 
 function scoreQuiz(event) {

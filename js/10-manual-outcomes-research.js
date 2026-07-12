@@ -9,16 +9,18 @@ function renderOutcomes() {
   const list = outcomesForPatient(patientId);
   $('outcomeVisuals').innerHTML = list.length ? list.map(o => {
     const base = N(o.baseline), current = N(o.current), target = N(o.target);
-    let progress = 0;
+    let progress = null;
     if (o.direction === 'Lower is better') progress = base === target ? 100 : clamp((base - current) / (base - target) * 100, 0, 100);
-    else progress = target === base ? 100 : clamp((current - base) / (target - base) * 100, 0, 100);
-    return `<article class="trajectory-card"><h3>${E(o.measure)}</h3><div class="trajectory-values"><span>Baseline<b>${E(o.baseline)}</b></span><span>Current<b>${E(o.current)}</b></span><span>Target<b>${E(o.target)}</b></span></div><div class="trajectory-bar"><i style="width:${progress}%"></i></div><small>${Math.round(progress)}% of numeric baseline-to-target path · no clinical significance inferred</small></article>`;
+    else if (o.direction === 'Higher is better') progress = target === base ? 100 : clamp((current - base) / (target - base) * 100, 0, 100);
+    const progressText = progress === null ? 'Goal-specific direction · no percentage calculated' : `${Math.round(progress)}% of numeric baseline-to-target path · no clinical significance inferred`;
+    return `<article class="trajectory-card"><h3>${E(o.measure)}</h3><div class="trajectory-values"><span>Baseline<b>${E(o.baseline)}</b></span><span>Current<b>${E(o.current)}</b></span><span>Target<b>${E(o.target)}</b></span></div>${progress === null ? '' : `<div class="trajectory-bar"><i style="width:${progress}%"></i></div>`}<small>${E(progressText)}</small></article>`;
   }).join('') : '<div class="empty">No outcomes recorded for this patient.</div>';
   $('outcomeList').innerHTML = list.map(o => `<article class="outcome-card"><div class="card-top"><div><h3>${E(o.measure)}</h3><p>${fmtDate(o.date)} · ${E(o.direction)}</p></div><span class="badge info">Recorded</span></div><p>${E(o.note || 'No context note.')}</p></article>`).join('');
 }
 
 function saveOutcome(event) {
   event.preventDefault();
+  if (!event.target.reportValidity()) return;
   state.outcomes.unshift({ id: uid('outcome'), patientId: $('outcomePatient').value, measure: $('outcomeMeasure').value, baseline: N($('outcomeBaseline').value), current: N($('outcomeCurrent').value), target: N($('outcomeTarget').value), date: $('outcomeDate').value || today(), direction: $('outcomeDirection').value, note: $('outcomeNote').value.trim(), createdAt: new Date().toISOString() });
   saveState(); event.target.reset(); $('outcomeDate').value = today(); renderAll(); showStatus('Outcome recorded.');
 }

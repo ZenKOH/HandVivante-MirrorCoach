@@ -5,7 +5,7 @@
 <form id="outcomeForm">
 <label>Patient<select id="outcomePatient"></select></label>
 <label>Measure<select id="outcomeMeasure"><option>FMA-UE</option><option>ARAT</option><option>Box and Block Test</option><option>Motor Activity Log</option><option>Patient-specific functional goal</option><option>Pain rating</option><option>Other approved measure</option></select></label>
-<div class="grid-3"><label>Baseline<input id="outcomeBaseline" step="any" type="number"/></label><label>Current<input id="outcomeCurrent" step="any" type="number"/></label><label>Target<input id="outcomeTarget" step="any" type="number"/></label></div>
+<div class="grid-3"><label>Baseline<input id="outcomeBaseline" required step="any" type="number"/></label><label>Current<input id="outcomeCurrent" required step="any" type="number"/></label><label>Target<input id="outcomeTarget" required step="any" type="number"/></label></div>
 <div class="grid-2"><label>Date<input id="outcomeDate" type="date"/></label><label>Direction<select id="outcomeDirection"><option>Higher is better</option><option>Lower is better</option><option>Goal-specific</option></select></label></div>
 <label>Context / note<textarea id="outcomeNote" placeholder="Measurement conditions, cueing, device, assessor, caveats" rows="3"></textarea></label>
 <button class="primary" type="submit">Save outcome</button>

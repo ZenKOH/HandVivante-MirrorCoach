@@ -89,6 +89,29 @@ The operating manual deliberately avoids inventing device-specific force limits,
 └── .github/workflows/pages.yml
 ```
 
+## Validation and quality checks
+
+Run the repository checks before deployment:
+
+```bash
+for file in js/*.js; do node --check "$file"; done
+python3 tests/validate_static.py
+```
+
+The GitHub Pages workflow runs these checks before publishing. The validator confirms that required files exist, service-worker cache entries resolve, interface IDs are unique, and static JavaScript element references match the assembled interface.
+
+### Reliability fixes included in the reviewed build
+
+- date-only seven-day calculations now include sessions entered earlier on the current day and avoid UTC/local-date drift;
+- mandatory session phases cannot be skipped through the phase navigator;
+- delivered RMHT minutes are recorded explicitly rather than hard-coded as 30 minutes;
+- transfer successes cannot exceed attempts;
+- tutorial completion requires passing the competency check;
+- blank outcome values can no longer be silently stored as zero;
+- goal-specific outcomes no longer receive an arbitrary higher-is-better progress percentage;
+- narrow-screen grid overflow is contained;
+- the service worker only caches successful same-origin responses and uses the application shell fallback only for navigation requests.
+
 ## Production roadmap
 
 ### Phase 1 — static clinical workflow prototype
