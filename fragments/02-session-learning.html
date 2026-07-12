@@ -1,0 +1,41 @@
+<section class="tab-panel" hidden="" id="session">
+<section class="panel session-launch">
+<div class="section-heading inline"><div><p class="eyebrow">30-minute guided workflow</p><h2>Robotic Mirror Hand Therapy session</h2><p>Complete safety checks, verify synchrony, coach intention, deliver two task blocks, then test unassisted transfer.</p></div><div class="device-pill"><span class="status-dot"></span>Device bridge: simulation</div></div>
+<div class="grid-3"><label>Patient<select id="sessionPatient"></select></label><label>Prescription<select id="sessionProtocol"></select></label><label>Session date<input id="sessionDate" type="date"/></label></div>
+</section>
+<div class="session-grid">
+<section class="panel timer-panel">
+<div class="timer-ring" id="timerRing"><span id="phaseLetter">A</span><strong id="timerDisplay">03:00</strong><small id="phaseName">Safety &amp; readiness</small></div>
+<div class="timer-controls"><button class="primary compact" id="timerStartBtn" type="button">Start</button><button class="secondary compact" id="timerPauseBtn" type="button">Pause</button><button class="secondary compact" id="timerResetBtn" type="button">Reset phase</button></div>
+<div class="phase-tabs" id="phaseTabs"></div>
+<p class="small-note">The timer is a workflow aid only. The clinician remains responsible for dose, observation, and stopping the session.</p>
+</section>
+<section class="panel session-workspace">
+<div id="phaseContent"></div>
+<div class="session-nav"><button class="secondary" id="prevPhaseBtn" type="button">Previous phase</button><button class="primary" id="completePhaseBtn" type="button">Complete &amp; continue</button></div>
+</section>
+</div>
+</section>
+<section class="tab-panel" hidden="" id="exercises">
+<section class="panel">
+<div class="section-heading inline"><div><p class="eyebrow">Task library</p><h2>Functional exercise catalogue</h2><p>Each exercise defines purpose, setup, measurable dose, common compensations, and progression.</p></div><div class="filter-row"><select aria-label="Filter by movement family" id="exerciseFamilyFilter"></select><select aria-label="Filter by severity" id="exerciseLevelFilter"><option value="all">All levels</option><option value="severe">Severe</option><option value="moderate">Moderate</option><option value="mild">Mild</option></select></div></div>
+<div class="exercise-grid" id="exerciseGrid"></div>
+</section>
+</section>
+<section class="tab-panel" hidden="" id="tutorial">
+<section class="tutorial-layout">
+<aside class="panel tutorial-nav"><div class="section-heading"><p class="eyebrow">Interactive orientation</p><h2>HandVivante tutorial</h2><p>Approximately 10-15 minutes.</p></div><div id="tutorialSteps"></div><div class="tutorial-progress"><span id="tutorialProgressText">0% complete</span><div class="progress"><i id="tutorialProgressBar"></i></div></div></aside>
+<section class="panel tutorial-stage"><div id="tutorialContent"></div><div class="session-nav"><button class="secondary" id="tutorialPrevBtn" type="button">Previous</button><button class="primary" id="tutorialNextBtn" type="button">Next</button></div></section>
+</section>
+</section>
+<section class="tab-panel" hidden="" id="manual">
+<section class="panel manual-hero">
+<div><p class="eyebrow">Operating guidance</p><h2>HandVivante™ MirrorHand operating manual</h2><p>A searchable, clinic-ready workflow derived from the supplied product brochure and training material. The current official Instructions for Use and local policy always take precedence.</p></div>
+<img alt="HandVivante robotic hand exoskeleton" src="assets/robotic-hand.svg"/>
+</section>
+<section class="panel">
+<div class="manual-tools"><label>Search manual<input id="manualSearch" placeholder="Search setup, contraindications, mirror-guided mode, safety..." type="search"/></label><button class="secondary" id="printManualBtn" type="button">Print manual</button></div>
+<div class="manual-warning"><strong>Important:</strong> This web manual is an implementation aid, not the manufacturer-controlled IFU. Do not infer missing device specifications, force limits, cleaning chemicals, maintenance intervals, or service procedures from this prototype.</div>
+<div class="manual-sections" id="manualSections"></div>
+</section>
+</section>
