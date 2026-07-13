@@ -15,6 +15,13 @@ function bindEvents() {
   $('protocolForm').addEventListener('submit', saveProtocol); $('protocolPatient').addEventListener('change', () => loadProtocolForPatient($('protocolPatient').value));
   $('protocolForm').addEventListener('input', renderProtocolPreview);
   $('dashboardPatientFilter').addEventListener('change', renderDashboard);
+  $('architectureList').addEventListener('click', event => { const button = event.target.closest('[data-architecture]'); if (button) openArchitecturePhase(button.dataset.architecture); });
+  $('closeArchitectureDialog').addEventListener('click', () => $('architectureDialog').close());
+  $('architectureDialogContent').addEventListener('click', event => {
+    if (event.target.closest('[data-architecture-close]')) $('architectureDialog').close();
+    if (event.target.closest('[data-architecture-go-session]')) { $('architectureDialog').close(); switchTab('session'); }
+  });
+  $('architectureDialog').addEventListener('click', event => { if (event.target === $('architectureDialog')) $('architectureDialog').close(); });
   $('sessionPatient').addEventListener('change', () => { resetSessionDraft(); renderSession(); }); $('sessionProtocol').addEventListener('change', () => { collectPhaseInputs(); sessionDraft.protocolId = $('sessionProtocol').value; renderSession(); });
   $('timerStartBtn').addEventListener('click', startTimer); $('timerPauseBtn').addEventListener('click', stopTimer); $('timerResetBtn').addEventListener('click', resetPhaseTimer);
   $('phaseTabs').addEventListener('click', e => { const b = e.target.closest('[data-phase]'); if (b) goToPhase(N(b.dataset.phase)); });
