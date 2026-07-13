@@ -8,7 +8,7 @@ async function loadMirrorCoach() {
     root.innerHTML = (await Promise.all(responses.map(response => response.text()))).join('');
     for (const src of APP_SCRIPTS) {
       await new Promise((resolve, reject) => {
-        const script = document.createElement('script'); script.src = `${src}?v=20260712-3`; script.onload = resolve; script.onerror = reject; document.body.appendChild(script);
+        const script = document.createElement('script'); script.src = `${src}?v=20260713-1`; script.onload = resolve; script.onerror = reject; document.body.appendChild(script);
       });
     }
   } catch (error) {
