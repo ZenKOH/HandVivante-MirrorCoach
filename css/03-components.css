@@ -66,6 +66,12 @@ dialog::backdrop{background:rgba(5,3,10,.78);backdrop-filter:blur(5px)}
 .quiz-result{padding:12px;border-radius:14px;border:1px solid var(--line);margin-top:12px;font-size:12px}
 .quiz-result.good{border-color:rgba(101,217,166,.4);background:rgba(101,217,166,.08)}
 .quiz-result.warning{border-color:rgba(248,196,103,.45);background:rgba(248,196,103,.08)}
-.manual-hero{display:grid;grid-template-columns:1fr 220px;align-items:center}
+.manual-hero{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:center;overflow:hidden}
 .manual-hero p{color:var(--muted);max-width:950px}
-.manual-hero img{width:100%;height:180px;object-fit:contain}
+.manual-hero img{width:100%;height:220px;object-fit:cover;object-position:center;border-radius:18px;border:1px solid var(--line);box-shadow:0 14px 34px rgba(100,22,46,.09)}
+.manual-photo{margin:14px 0 18px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff8fa;box-shadow:0 10px 26px rgba(100,22,46,.055)}
+.manual-photo img{display:block;width:100%;max-height:360px;object-fit:cover;object-position:center}
+.manual-photo figcaption{padding:10px 12px;color:var(--muted);font-size:11px;line-height:1.45;background:#fff}
+.manual-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.manual-photo-grid .manual-photo{margin:0}
+.manual-photo-grid .manual-photo img{height:230px}
