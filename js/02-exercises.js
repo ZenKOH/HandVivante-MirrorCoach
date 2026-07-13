@@ -1,6 +1,6 @@
 const EXERCISES = [
   {
-    id: 'open-close', title: 'Slow full-hand opening and closing', family: 'Gross hand opening / closing', levels: ['severe', 'moderate', 'mild'], image: 'assets/passive-rom.svg',
+    id: 'open-close', title: 'Slow full-hand opening and closing', family: 'Gross hand opening / closing', levels: ['severe', 'moderate', 'mild'], image: 'assets/exercise-assisted-open-close.webp', imageAlt: 'HandVivante robotic hand supporting assisted finger opening and closing',
     purpose: 'Prime the mirror illusion, expose the affected hand to synchronised movement, and practise controlled flexion-extension.',
     setup: 'Forearms supported, mirror aligned at midline, affected hand fitted in the robotic hand, less-affected hand in the sensor glove.',
     pattern: 'Slowly open to the clinician-approved range, pause briefly, then close without forcing end range.',
@@ -10,7 +10,7 @@ const EXERCISES = [
     progression: 'Increase comfortable range first, then repetitions, then speed or reduced assistance.'
   },
   {
-    id: 'finger-sequence', title: 'Sequential finger activation', family: 'Finger individuation', levels: ['moderate', 'mild'], image: 'assets/task-peg.svg',
+    id: 'finger-sequence', title: 'Sequential finger activation', family: 'Finger individuation', levels: ['moderate', 'mild'], image: 'assets/exercise-peg-transfer.webp', imageAlt: 'HandVivante bilateral system performing a peg-board finger-control task',
     purpose: 'Practise selective finger timing and reduce whole-hand mass-pattern dominance.',
     setup: 'Use no object initially. Progress to touching large pegs or targets while the forearm remains supported.',
     pattern: 'Index to little finger, then reverse. The patient attempts each movement immediately before robotic assistance.',
@@ -20,7 +20,7 @@ const EXERCISES = [
     progression: 'Reverse order, random sequence, smaller targets, or reduced assistance.'
   },
   {
-    id: 'opposition', title: 'Thumb-to-fingertip opposition', family: 'Thumb opposition', levels: ['moderate', 'mild'], image: 'assets/robotic-hand.svg',
+    id: 'opposition', title: 'Thumb-to-fingertip opposition', family: 'Thumb opposition', levels: ['moderate', 'mild'], image: 'assets/exercise-robotic-hand-closeup.webp', imageAlt: 'Close-up of the HandVivante robotic hand exoskeleton supporting the fingers and thumb',
     purpose: 'Develop thumb positioning and prepare for pinch and object manipulation.',
     setup: 'Adjust thumb position only within the clinician-approved and device-supported configuration.',
     pattern: 'Thumb to index, middle, ring, and little finger, then return to neutral.',
@@ -30,7 +30,7 @@ const EXERCISES = [
     progression: 'Smaller targets, varied sequence, or functional pinch tasks.'
   },
   {
-    id: 'cylinder', title: 'Cylindrical grasp, hold and release', family: 'Cylindrical power grasp / release', levels: ['severe', 'moderate', 'mild'], image: 'assets/task-bimanual.svg',
+    id: 'cylinder', title: 'Cylindrical grasp, hold and release', family: 'Cylindrical power grasp / release', levels: ['severe', 'moderate', 'mild'], image: 'assets/exercise-cup-grasp.webp', imageAlt: 'HandVivante sensor glove and robotic hand grasping lightweight cups',
     purpose: 'Practise a functional grasp pattern with controlled release.',
     setup: 'Use a lightweight, non-breakable foam cylinder or empty cup that can be released easily.',
     pattern: 'Open, approach, grasp, hold 2-3 seconds, release fully, and return.',
@@ -40,7 +40,7 @@ const EXERCISES = [
     progression: 'Vary diameter, add a short transport, reduce assistance, or narrow the target zone.'
   },
   {
-    id: 'ball', title: 'Spherical grasp with soft ball', family: 'Spherical grasp / release', levels: ['moderate', 'mild'], image: 'assets/product-hero.svg',
+    id: 'ball', title: 'Spherical grasp with soft ball', family: 'Spherical grasp / release', levels: ['moderate', 'mild'], image: 'assets/exercise-bilateral-grasp.webp', imageAlt: 'HandVivante sensor glove and robotic hand holding soft balls during bilateral practice',
     purpose: 'Practise palmar shaping and graded opening for a rounded object.',
     setup: 'Use a soft, lightweight ball sized so the fingers are not forced beyond comfortable range.',
     pattern: 'Open, shape the hand around the ball, hold, and release into a marked area.',
@@ -50,7 +50,7 @@ const EXERCISES = [
     progression: 'Use different ball sizes or increase placement distance while maintaining support.'
   },
   {
-    id: 'lateral-pinch', title: 'Card or cloth lateral pinch', family: 'Lateral pinch', levels: ['moderate', 'mild'], image: 'assets/task-peg.svg',
+    id: 'lateral-pinch', title: 'Card or cloth lateral pinch', family: 'Lateral pinch', levels: ['moderate', 'mild'], image: 'assets/exercise-peg-transfer.webp', imageAlt: 'HandVivante bilateral system performing a controlled peg-board pinch task',
     purpose: 'Prepare for stabilising cards, paper, cloth, or a zipper tab.',
     setup: 'Use a large card or soft fabric strip; avoid sharp edges.',
     pattern: 'Open, position thumb against the side of the index finger, hold, then release.',
@@ -60,7 +60,7 @@ const EXERCISES = [
     progression: 'Lighter support, longer hold, or a gentle pull by the therapist.'
   },
   {
-    id: 'tripod', title: 'Large peg tripod pinch', family: 'Tripod pinch', levels: ['moderate', 'mild'], image: 'assets/task-peg.svg',
+    id: 'tripod', title: 'Large peg tripod pinch', family: 'Tripod pinch', levels: ['moderate', 'mild'], image: 'assets/exercise-peg-transfer.webp', imageAlt: 'HandVivante robotic hand and sensor glove completing a large-peg placement task',
     purpose: 'Train thumb-index-middle finger coordination for small-object tasks.',
     setup: 'Begin with a large peg positioned close to the hand and forearm support.',
     pattern: 'Approach, form tripod contact, lift minimally, place in a wide target.',
@@ -70,7 +70,7 @@ const EXERCISES = [
     progression: 'Smaller peg, narrower target, or reduced robotic assistance.'
   },
   {
-    id: 'release', title: 'Release into a target zone', family: 'Release control', levels: ['severe', 'moderate', 'mild'], image: 'assets/task-bimanual.svg',
+    id: 'release', title: 'Release into a target zone', family: 'Release control', levels: ['severe', 'moderate', 'mild'], image: 'assets/exercise-peg-transfer.webp', imageAlt: 'HandVivante system guiding a controlled release into a peg-board target',
     purpose: 'Emphasise opening and prevent the training dose from becoming grasp-dominant.',
     setup: 'Use a foam block or lightweight object and a large high-contrast target.',
     pattern: 'Grasp with assistance, transport a short distance, then fully open to release.',
@@ -80,7 +80,7 @@ const EXERCISES = [
     progression: 'Smaller target, longer transport, faster initiation, or reduced assistance.'
   },
   {
-    id: 'stabilise', title: 'Affected-hand stabilisation', family: 'Bimanual stabilisation', levels: ['moderate', 'mild'], image: 'assets/task-bimanual.svg',
+    id: 'stabilise', title: 'Affected-hand stabilisation', family: 'Bimanual stabilisation', levels: ['moderate', 'mild'], image: 'assets/exercise-cup-grasp.webp', imageAlt: 'HandVivante sensor glove and robotic hand stabilising lightweight cups',
     purpose: 'Link robotic practice to a realistic bimanual role and counter learned non-use.',
     setup: 'Use an empty, non-breakable container on a non-slip mat.',
     pattern: 'Affected hand holds the container while the less-affected hand manipulates a lid or object.',
@@ -90,7 +90,7 @@ const EXERCISES = [
     progression: 'Reduce external support or use a more realistic daily-life object.'
   },
   {
-    id: 'reach-place', title: 'Reach, grasp and place', family: 'Task-oriented reach, grasp and place', levels: ['moderate', 'mild'], image: 'assets/task-peg.svg',
+    id: 'reach-place', title: 'Reach, grasp and place', family: 'Task-oriented reach, grasp and place', levels: ['moderate', 'mild'], image: 'assets/exercise-peg-transfer.webp', imageAlt: 'HandVivante robotic hand and sensor glove practising reach, grasp and peg placement',
     purpose: 'Integrate hand opening and grasp with proximal movement and functional placement.',
     setup: 'Forearm support may be reduced only when shoulder and trunk control are adequate.',
     pattern: 'Reach a short distance, grasp a lightweight object, place it in a wide target, and return.',

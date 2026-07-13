@@ -1,4 +1,4 @@
-const CACHE = 'mirrorcoach-static-v7';
+const CACHE = 'mirrorcoach-static-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -31,7 +31,12 @@ const ASSETS = [
   './assets/robotic-hand.svg',
   './assets/sensor-glove.svg',
   './assets/task-bimanual.svg',
-  './assets/task-peg.svg'
+  './assets/task-peg.svg',
+  './assets/exercise-cup-grasp.webp',
+  './assets/exercise-robotic-hand-closeup.webp',
+  './assets/exercise-peg-transfer.webp',
+  './assets/exercise-bilateral-grasp.webp',
+  './assets/exercise-assisted-open-close.webp'
 ];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
