@@ -31,8 +31,66 @@
   .login-shell{grid-template-columns:1fr}.login-card{max-width:760px;margin:0}.app-header{grid-template-columns:1fr}.header-actions{justify-content:flex-start}.hero-panel{grid-template-columns:1fr}.hero-panel img{height:250px}.stats-grid{grid-template-columns:repeat(2,1fr)}.two-column,.session-grid,.tutorial-layout{grid-template-columns:1fr}.sticky-panel,.timer-panel,.tutorial-nav{position:static}.exercise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:760px){
-  .login-shell{padding:22px}.login-copy h1{font-size:52px}.mechanism-strip{grid-template-columns:1fr}.app-header{padding:22px 16px}.header-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.user-chip{grid-column:1/-1}.tab-nav{padding:10px 14px}.app-shell,footer{width:calc(100% - 28px)}.hero-panel h2{font-size:35px}.stats-grid,.dashboard-grid,.research-grid,.exercise-grid,.outcome-visuals,.component-grid{grid-template-columns:1fr}.wide{grid-column:auto}.grid-2,.grid-3,.movement-grid{grid-template-columns:1fr}.section-heading.inline{display:block}.section-heading.inline>select,.section-heading.inline>.filter-row{margin-top:12px}.dose-row{grid-template-columns:1fr}.dose-row>strong{text-align:left}.timer-controls{grid-template-columns:1fr}.manual-hero{grid-template-columns:1fr}.manual-tools{grid-template-columns:1fr}.mechanism-diagram{grid-template-columns:1fr}.mechanism-arrow{transform:rotate(90deg);text-align:center}.session-nav{flex-direction:column}.session-nav button{width:100%}.tutorial-stage{min-height:auto}.header-actions button{width:100%}
+  .login-shell{padding:135px 22px 22px}.login-company-logo{top:24px;left:22px}.login-copy h1{font-size:52px}.mechanism-strip{grid-template-columns:1fr}.app-header{padding:20px 16px}.app-brand{display:grid;gap:14px}.brand-mark.small{width:215px;max-width:74vw}.header-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.user-chip{grid-column:1/-1}.tab-nav{padding:10px 14px}.app-shell,footer{width:calc(100% - 28px)}.hero-panel h2{font-size:35px}.stats-grid,.dashboard-grid,.research-grid,.exercise-grid,.outcome-visuals,.component-grid{grid-template-columns:1fr}.wide{grid-column:auto}.grid-2,.grid-3,.movement-grid{grid-template-columns:1fr}.section-heading.inline{display:block}.section-heading.inline>select,.section-heading.inline>.filter-row{margin-top:12px}.dose-row{grid-template-columns:1fr}.dose-row>strong{text-align:left}.timer-controls{grid-template-columns:1fr}.manual-hero{grid-template-columns:1fr}.manual-tools{grid-template-columns:1fr}.mechanism-diagram{grid-template-columns:1fr}.mechanism-arrow{transform:rotate(90deg);text-align:center}.session-nav{flex-direction:column}.session-nav button{width:100%}.tutorial-stage{min-height:auto}.header-actions button{width:100%}
 }
 @media print{
   body{background:#fff;color:#111}body:before,.app-header,.tab-nav,.app-status,footer,.manual-tools,.manual-warning{display:none!important}.app-shell{width:100%;padding:0}.tab-panel{display:none!important}#manual.tab-panel{display:block!important}.panel{box-shadow:none;background:#fff;border:1px solid #ccc;color:#111}.manual-hero img{max-height:120px}.manual-section{break-inside:avoid;background:#fff;border-color:#bbb}.manual-section .manual-content{display:block!important;color:#222}.manual-section button{color:#111}.manual-section button:after{display:none}.manual-content .callout{background:#f5f5f5}
+}
+
+/* Robotimize light visual system */
+@media screen{
+  .tab-nav{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(100,22,46,.055)}
+  .tab-button{background:#fff;border-color:var(--line);color:#5a5557}
+  .tab-button:hover{background:#fff5f7;border-color:rgba(194,31,71,.32)}
+  .tab-button.active{background:linear-gradient(135deg,rgba(194,31,71,.13),rgba(223,71,107,.07));border-color:rgba(194,31,71,.42);color:var(--accent)}
+  .app-status{background:#fff;color:var(--text);border-color:rgba(194,31,71,.22)}
+  .app-status.error{border-color:rgba(181,28,66,.55)}
+  .hero-panel{position:relative;background:linear-gradient(135deg,#fff 0%,#fff 62%,#fff3f6 100%);overflow:hidden}
+  .hero-panel:after{content:"";position:absolute;right:-80px;top:-110px;width:260px;height:260px;border:36px solid rgba(194,31,71,.055);border-radius:50%;pointer-events:none}
+  .hero-panel>div,.hero-panel>img{position:relative;z-index:1}
+  .hero-panel p:not(.eyebrow){color:var(--muted)}
+  .hero-panel img{filter:drop-shadow(0 24px 28px rgba(73,35,47,.12))}
+  .stat-card{background:#fff;border-top:4px solid var(--accent);box-shadow:0 14px 36px rgba(100,22,46,.075)}
+  .stat-card span,.stat-card small{color:var(--muted)}
+  .stat-card strong{color:var(--accent)}
+  .dose-track,.progress,.trajectory-bar{background:#f4e7eb;border-color:rgba(194,31,71,.12)}
+  .dose-track i,.progress i,.trajectory-bar i{background:linear-gradient(90deg,var(--accent),#df476b,var(--accent-3))}
+  .architecture-list li,.prompt-card,.patient-card,.protocol-card,.outcome-card,.event-card,.week-card,.movement-card,.exercise-card,.detail-list article,.component-card,.mechanism-node,.quiz-question,.manual-section,.trajectory-card{background:#fff;border-color:var(--line);box-shadow:0 8px 24px rgba(100,22,46,.04)}
+  .architecture-list b,.week-card b,.mechanism-arrow{color:var(--accent)}
+  .prompt-card p,.patient-card p,.protocol-card p,.outcome-card p,.movement-card p,.exercise-card p,.detail-list article p,.component-card p,.mechanism-node span{color:var(--muted)}
+  .prompt-card.warning{border-color:rgba(182,120,19,.38);background:#fffaf0}
+  .prompt-card.risk{border-color:rgba(181,28,66,.4);background:#fff7f9}
+  .prompt-card.good{border-color:rgba(47,125,90,.34);background:#f7fcf9}
+  th{color:#746e70;background:#fff8fa}
+  th,td{border-color:rgba(194,31,71,.11)}
+  .badge.good{border-color:rgba(47,125,90,.35);color:#246848;background:#f0faf5}
+  .badge.warning{border-color:rgba(182,120,19,.38);color:#86590e;background:#fff8e9}
+  .badge.risk{border-color:rgba(181,28,66,.38);color:#9f1739;background:#fff1f4}
+  .badge.info{border-color:rgba(194,31,71,.3);color:var(--accent);background:#fff3f6}
+  .mini-metrics span,.phase-tab,.tutorial-step{background:#fff;color:#5f595b;border-color:var(--line)}
+  .eligibility-box{border-color:var(--line)}
+  .eligibility-box legend{color:var(--text)}
+  .eligibility-summary,.cue-box,.transfer-box,.governance-box{background:#fff4f7;border-color:rgba(194,31,71,.25);color:var(--text)}
+  .eligibility-summary.risk,.stop-box{background:#fff1f4;border-color:rgba(181,28,66,.34)}
+  .device-pill{background:#f0faf5;color:#286c4d;border-color:rgba(47,125,90,.3)}
+  .timer-ring{background:conic-gradient(var(--accent) 0deg,#f3e4e8 0deg);border-color:var(--line);box-shadow:inset 0 0 0 16px #fff,0 20px 48px rgba(100,22,46,.1)}
+  .timer-ring span{color:var(--accent)}
+  .timer-ring strong{color:var(--text)}
+  .phase-tab.active,.tutorial-step.active{border-color:rgba(194,31,71,.42);background:#fff1f4;color:var(--accent)}
+  .phase-checks .check-row{background:#fff;border-color:var(--line)}
+  .cue-box p,.stop-box p,.transfer-box p{color:#5c5658}
+  .movement-card img,.exercise-card img,.tutorial-visual{background:#fff8fa;border-color:var(--line)}
+  dialog{background:#fff;color:var(--text);border-color:var(--line);box-shadow:0 35px 90px rgba(64,25,37,.24)}
+  dialog::backdrop{background:rgba(64,62,62,.44)}
+  .dialog-close{background:#fff;border-color:var(--line);color:var(--accent)}
+  .tag{color:#625c5e;background:#fff8fa}
+  .manual-warning{background:#fff8e9;border-color:rgba(182,120,19,.35);color:#74500f}
+  .manual-section button{color:var(--text)}
+  .manual-section button:after{color:var(--accent)}
+  .manual-content{color:#5c5658}
+  .manual-content h4{color:var(--text)}
+  .manual-content .callout{background:#fff3f6}
+  .trajectory-values b{color:var(--text)}
+  .governance-box p{color:var(--muted)}
+  .empty{background:#fff;color:var(--muted)}
 }
