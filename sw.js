@@ -1,4 +1,4 @@
-const CACHE = 'mirrorcoach-static-v6';
+const CACHE = 'mirrorcoach-static-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -24,7 +24,7 @@ const ASSETS = [
   './fragments/01-clinical-planning.html',
   './fragments/02-session-learning.html',
   './fragments/03-outcomes-research-close.html',
-  './assets/brand-mark.svg',
+  './assets/robotimize-logo.png',
   './assets/control-box.svg',
   './assets/passive-rom.svg',
   './assets/product-hero.svg',
