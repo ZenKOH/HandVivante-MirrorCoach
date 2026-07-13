@@ -79,13 +79,13 @@
 <div class="dose-chart" id="doseChart"></div>
 </article>
 <article class="panel">
-<div class="section-heading"><h2>Current session architecture</h2><p>Standard 30-minute RMHT workflow.</p></div>
-<ol class="architecture-list">
-<li><b>3 min</b><span>Safety &amp; readiness</span></li>
-<li><b>4 min</b><span>Calibration &amp; familiarisation</span></li>
-<li><b>5 min</b><span>Sensorimotor priming</span></li>
-<li><b>15 min</b><span>Two high-repetition task blocks</span></li>
-<li><b>3 min</b><span>Functional transfer &amp; cooldown</span></li>
+<div class="section-heading"><h2>Current session architecture</h2><p id="architectureHint">Standard 30-minute RMHT workflow. Select a phase for clinical sequence, quality gates, documentation and evidence interpretation.</p></div>
+<ol aria-describedby="architectureHint" class="architecture-list" id="architectureList">
+<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="safety" type="button"><b>3 min</b><span class="architecture-copy"><strong>Safety &amp; readiness</strong><small>Daily go / modify / stop decision</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="calibration" type="button"><b>4 min</b><span class="architecture-copy"><strong>Calibration &amp; familiarisation</strong><small>Fit, alignment and synchrony gate</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="priming" type="button"><b>5 min</b><span class="architecture-copy"><strong>Sensorimotor priming</strong><small>Mirror gaze, motor intent and assisted movement</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="training" type="button"><b>15 min</b><span class="architecture-copy"><strong>Two high-repetition task blocks</strong><small>Purposeful dose with quality and assistance tracking</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="transfer" type="button"><b>3 min</b><span class="architecture-copy"><strong>Functional transfer &amp; cooldown</strong><small>Real-task probe, doffing and post-session review</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
 </ol>
 </article>
 <article class="panel">
