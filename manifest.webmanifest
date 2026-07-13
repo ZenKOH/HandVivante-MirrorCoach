@@ -8,9 +8,9 @@
   "theme_color": "#c21f47",
   "icons": [
     {
-      "src": "assets/brand-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "assets/robotimize-logo.png",
+      "sizes": "512x170",
+      "type": "image/png",
       "purpose": "any"
     }
   ]
