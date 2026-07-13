@@ -4,9 +4,14 @@
   "description": "Clinical workflow prototype for Robotic Mirror Hand Therapy, training, guided protocols, functional exercises and research documentation.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0c0914",
-  "theme_color": "#120f20",
+  "background_color": "#ffffff",
+  "theme_color": "#c21f47",
   "icons": [
-    { "src": "assets/brand-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    {
+      "src": "assets/brand-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ]
 }
