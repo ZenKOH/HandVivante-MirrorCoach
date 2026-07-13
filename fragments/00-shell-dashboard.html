@@ -1,100 +1,160 @@
 <section aria-labelledby="loginTitle" class="login-shell" id="loginView">
-<a aria-label="Visit the Robotimize website" class="company-logo-link login-company-logo" href="https://www.robotimize.tech/" rel="noopener noreferrer" target="_blank"><img alt="Robotimize — Tech for Care" class="brand-mark" src="assets/robotimize-logo.png?v=20260713-2"/></a>
-<div class="login-copy">
-<div class="brand-row">
-<div><p class="eyebrow">Clinical training prototype</p><h1 id="loginTitle">HandVivante™<br/><span>MirrorCoach</span></h1></div>
-</div>
-<p class="hero-copy">A clinician-prescribed workspace for Robotic Mirror Hand Therapy: assessment, tutorial, operating guidance, session delivery, functional practice, outcomes, and research-quality documentation.</p>
-<div aria-label="Three-part RMHT mechanism" class="mechanism-strip">
-<article><strong>01</strong><span>Mirror visual feedback</span></article>
-<article><strong>02</strong><span>Synchronous robotic movement</span></article>
-<article><strong>03</strong><span>Intent and attention coaching</span></article>
-</div>
-<p class="clinical-note">This public build is an education and workflow prototype. It does not connect to a medical device, provide medical advice, or replace the official device instructions for use, local governance, or licensed clinical judgement.</p>
-</div>
-<div class="login-card panel">
-<img alt="HandVivante sensor glove and robotic hand exoskeleton" class="login-product" src="assets/product-hero.svg"/>
-<div class="section-heading"><p class="eyebrow">Demo access</p><h2>Enter the MirrorCoach workspace</h2><p>No server account is created. Your demo profile and records stay in this browser.</p></div>
-<form id="loginForm">
-<label>Display name<input autocomplete="name" id="loginName" maxlength="60" required="" type="text" value="Demo Clinician"/></label>
-<label>Role<select id="loginRole" required="">
-<option value="clinician">Clinician</option>
-<option value="patient">Patient / caregiver</option>
-<option value="researcher">Researcher</option>
-<option value="admin">Clinic administrator</option>
-</select></label>
-<label>Organisation / site<input id="loginOrg" maxlength="80" type="text" value="MirrorCoach Demonstration Site"/></label>
-<label class="check-row"><input id="loginConsent" required="" type="checkbox"/><span>I understand this is a non-clinical prototype using synthetic data.</span></label>
-<button class="primary" type="submit">Enter workspace</button>
-</form>
-<p class="privacy-mini">Do not enter directly identifiable patient information into the public GitHub Pages version.</p>
-</div>
+  <div class="login-topbar">
+    <a aria-label="Visit the Robotimize website" class="company-logo-link" href="https://www.robotimize.tech/" rel="noopener noreferrer" target="_blank"><img alt="Robotimize — Tech for Care" class="brand-mark" src="assets/robotimize-logo.png?v=20260713-2"/></a>
+    <div class="language-switcher" data-language-switcher>
+      <button aria-expanded="false" aria-haspopup="true" class="language-button secondary" data-language-button type="button"><span aria-hidden="true">◎</span><span data-language-label>English</span><span aria-hidden="true">▾</span></button>
+      <div class="language-menu" data-language-menu hidden role="menu">
+        <button data-language="en" lang="en" role="menuitemradio" type="button">English</button>
+        <button data-language="zh-Hans" lang="zh-Hans" role="menuitemradio" type="button">简体中文</button>
+        <button data-language="es" lang="es" role="menuitemradio" type="button">Español</button>
+        <button data-language="fr" lang="fr" role="menuitemradio" type="button">Français</button>
+        <button data-language="de" lang="de" role="menuitemradio" type="button">Deutsch</button>
+        <button data-language="ms" lang="ms" role="menuitemradio" type="button">Bahasa Melayu</button>
+      </div>
+    </div>
+  </div>
+  <div class="login-grid">
+    <section class="login-showcase">
+      <div class="login-product-frame"><img alt="HandVivante sensor glove, robotic hand and control unit during bilateral practice" class="login-product" src="assets/exercise-bilateral-grasp.webp"/></div>
+      <div class="login-copy">
+        <p class="eyebrow" data-i18n="loginKicker">Clinical RMHT workspace</p>
+        <h1 id="loginTitle">HandVivante™ <span>MirrorCoach</span></h1>
+        <p class="hero-copy" data-i18n="loginIntro">A focused workspace for screening, prescription, guided robotic mirror hand therapy, functional practice and research-ready documentation.</p>
+        <div aria-label="Three-part RMHT mechanism" class="mechanism-strip">
+          <article><strong>01</strong><span data-i18n="mechanismVisual">Mirror visual feedback</span></article>
+          <article><strong>02</strong><span data-i18n="mechanismMotion">Synchronous robotic movement</span></article>
+          <article><strong>03</strong><span data-i18n="mechanismIntent">Intent and attention coaching</span></article>
+        </div>
+        <p class="clinical-note" data-i18n="prototypeNotice">Education and workflow prototype only. It does not control a medical device or replace the current manufacturer IFU, local governance or licensed clinical judgement.</p>
+      </div>
+    </section>
+    <section class="login-card panel" aria-labelledby="loginAccessTitle">
+      <div class="section-heading"><p class="eyebrow" data-i18n="demoAccess">Demo access</p><h2 id="loginAccessTitle" data-i18n="enterWorkspace">Enter the workspace</h2><p data-i18n="browserStorage">No server account is created. Demo records remain in this browser.</p></div>
+      <form id="loginForm">
+        <label><span data-i18n="displayName">Display name</span><input autocomplete="name" id="loginName" maxlength="60" required type="text" value="Demo Clinician"/></label>
+        <div class="login-form-grid">
+          <label><span data-i18n="role">Role</span><select id="loginRole" required>
+            <option data-i18n="roleClinician" value="clinician">Clinician</option>
+            <option data-i18n="rolePatient" value="patient">Patient / caregiver</option>
+            <option data-i18n="roleResearcher" value="researcher">Researcher</option>
+            <option data-i18n="roleAdmin" value="admin">Clinic administrator</option>
+          </select></label>
+          <label><span data-i18n="organisation">Organisation / site</span><input id="loginOrg" maxlength="80" type="text" value="MirrorCoach Demonstration Site"/></label>
+        </div>
+        <label class="check-row"><input id="loginConsent" required type="checkbox"/><span data-i18n="consent">I understand this is a non-clinical prototype using synthetic data.</span></label>
+        <button class="primary full" type="submit" data-i18n="enterButton">Enter MirrorCoach</button>
+      </form>
+      <p class="privacy-mini" data-i18n="privacy">Do not enter directly identifiable patient information in this public GitHub Pages build.</p>
+    </section>
+  </div>
 </section>
 <div id="appView" hidden>
-<header class="app-header">
-<div class="app-brand">
-<a aria-label="Visit the Robotimize website" class="company-logo-link" href="https://www.robotimize.tech/" rel="noopener noreferrer" target="_blank"><img alt="Robotimize — Tech for Care" class="brand-mark small" src="assets/robotimize-logo.png?v=20260713-2"/></a>
-<div><p class="eyebrow">Robotic Mirror Hand Therapy</p><h1>HandVivante™ <span>MirrorCoach</span></h1><p class="subtitle">Clinical implementation, therapist training, guided protocols, functional transfer, and research documentation.</p></div>
-</div>
-<div class="header-actions">
-<div class="user-chip"><span id="userInitials">DC</span><div><strong id="userName">Demo Clinician</strong><small id="userMeta">Clinician · Demonstration Site</small></div></div>
-<button class="secondary" id="loadDemoBtn" type="button">Reload synthetic demo</button>
-<button class="secondary" id="exportJsonBtn" type="button">Export JSON</button>
-<button class="danger ghost" id="logoutBtn" type="button">Sign out</button>
-</div>
-</header>
-<nav aria-label="MirrorCoach sections" class="tab-nav" id="tabNav">
-<button class="tab-button active" data-roles="clinician,patient,researcher,admin" data-tab="dashboard">Dashboard</button>
-<button class="tab-button" data-roles="clinician,researcher,admin" data-tab="patients">Patients</button>
-<button class="tab-button" data-roles="clinician,admin" data-tab="prescribe">Protocol Builder</button>
-<button class="tab-button" data-roles="clinician,patient,admin" data-tab="session">Guided Session</button>
-<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="exercises">Exercises</button>
-<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="tutorial">Tutorial</button>
-<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="manual">Operating Manual</button>
-<button class="tab-button" data-roles="clinician,patient,researcher,admin" data-tab="outcomes">Outcomes</button>
-<button class="tab-button" data-roles="clinician,researcher,admin" data-tab="research">Research</button>
-<button class="tab-button" data-roles="clinician,admin" data-tab="settings">Settings</button>
-</nav>
-<div aria-live="polite" class="app-status" id="appStatus" role="status"></div>
-<main class="app-shell">
-<section class="tab-panel active" id="dashboard">
-<section class="hero-panel panel">
-<div>
-<p class="eyebrow">Recovery command centre</p>
-<h2>Turn synchronised practice into documented clinical evidence.</h2>
-<p>MirrorCoach connects eligibility, prescription, safe delivery, repetition dose, functional transfer, outcomes, and therapist review. Device control is simulated in this public prototype.</p>
-<div class="hero-buttons"><button class="primary compact" data-go="session">Start guided session</button><button class="secondary compact" data-go="tutorial">Open product tutorial</button></div>
-</div>
-<img alt="HandVivante sensor glove and robotic hand exoskeleton" src="assets/product-hero.svg"/>
-</section>
-<section aria-label="Key programme indicators" class="stats-grid">
-<article class="stat-card"><span>Active RMHT minutes</span><strong id="statMinutes">0</strong><small>Current 7-day window</small></article>
-<article class="stat-card"><span>Movement cycles</span><strong id="statReps">0</strong><small>Documented this week</small></article>
-<article class="stat-card"><span>Sessions completed</span><strong id="statSessions">0</strong><small>Across current caseload</small></article>
-<article class="stat-card"><span>Safety review flags</span><strong id="statFlags">0</strong><small>Rule-based prompts only</small></article>
-</section>
-<section class="dashboard-grid">
-<article class="panel wide">
-<div class="section-heading inline"><div><h2>Weekly dose attainment</h2><p>Active practice minutes against each clinician-set target.</p></div><select aria-label="Filter dashboard by patient" id="dashboardPatientFilter"></select></div>
-<div class="dose-chart" id="doseChart"></div>
-</article>
-<article class="panel">
-<div class="section-heading"><h2>Current session architecture</h2><p id="architectureHint">Standard 30-minute RMHT workflow. Select a phase for clinical sequence, quality gates, documentation and evidence interpretation.</p></div>
-<ol aria-describedby="architectureHint" class="architecture-list" id="architectureList">
-<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="safety" type="button"><b>3 min</b><span class="architecture-copy"><strong>Safety &amp; readiness</strong><small>Daily go / modify / stop decision</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
-<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="calibration" type="button"><b>4 min</b><span class="architecture-copy"><strong>Calibration &amp; familiarisation</strong><small>Fit, alignment and synchrony gate</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
-<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="priming" type="button"><b>5 min</b><span class="architecture-copy"><strong>Sensorimotor priming</strong><small>Mirror gaze, motor intent and assisted movement</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
-<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="training" type="button"><b>15 min</b><span class="architecture-copy"><strong>Two high-repetition task blocks</strong><small>Purposeful dose with quality and assistance tracking</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
-<li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="transfer" type="button"><b>3 min</b><span class="architecture-copy"><strong>Functional transfer &amp; cooldown</strong><small>Real-task probe, doffing and post-session review</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
-</ol>
-</article>
-<article class="panel">
-<div class="section-heading"><h2>Clinical review prompts</h2><p>Explainable rules for clinician attention.</p></div>
-<div class="prompt-list" id="reviewPrompts"></div>
-</article>
-<article class="panel wide">
-<div class="section-heading"><h2>Caseload snapshot</h2><p>Synthetic records only. Formal scale content is not reproduced.</p></div>
-<div class="table-wrap"><table><thead><tr><th>Case</th><th>Pathway</th><th>Brunnstrom</th><th>MAS</th><th>FMA-UE</th><th>ARAT</th><th>Adherence</th><th>Status</th></tr></thead><tbody id="dashboardPatientTable"></tbody></table></div>
-</article>
-</section>
-</section>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="app-brand">
+        <a aria-label="Visit the Robotimize website" class="company-logo-link" href="https://www.robotimize.tech/" rel="noopener noreferrer" target="_blank"><img alt="Robotimize — Tech for Care" class="brand-mark small" src="assets/robotimize-logo.png?v=20260713-2"/></a>
+        <div class="brand-copy"><p class="eyebrow" data-i18n="appKicker">Robotic Mirror Hand Therapy</p><div class="product-title"><h1>HandVivante™ MirrorCoach</h1><span data-i18n="workspaceBadge">Clinical workspace</span></div><p class="subtitle" data-i18n="appSubtitle">Clinician-led screening, protocol delivery, task practice and evidence documentation.</p><ul class="header-assurance" aria-label="Platform principles"><li data-i18n="assuranceClinician">Clinician-led</li><li data-i18n="assuranceEvidence">Evidence-linked</li><li data-i18n="assuranceLocal">Local prototype</li></ul></div>
+      </div>
+      <div class="header-controls">
+        <div class="language-switcher" data-language-switcher>
+          <button aria-expanded="false" aria-haspopup="true" class="language-button secondary" data-language-button type="button"><span aria-hidden="true">◎</span><span data-language-label>English</span><span aria-hidden="true">▾</span></button>
+          <div class="language-menu" data-language-menu hidden role="menu">
+            <button data-language="en" lang="en" role="menuitemradio" type="button">English</button>
+            <button data-language="zh-Hans" lang="zh-Hans" role="menuitemradio" type="button">简体中文</button>
+            <button data-language="es" lang="es" role="menuitemradio" type="button">Español</button>
+            <button data-language="fr" lang="fr" role="menuitemradio" type="button">Français</button>
+            <button data-language="de" lang="de" role="menuitemradio" type="button">Deutsch</button>
+            <button data-language="ms" lang="ms" role="menuitemradio" type="button">Bahasa Melayu</button>
+          </div>
+        </div>
+        <details class="data-menu">
+          <summary data-i18n="workspaceMenu">Workspace</summary>
+          <div class="data-menu-panel">
+            <button class="secondary" id="loadDemoBtn" type="button" data-i18n="reloadDemo">Reload synthetic demo</button>
+            <button class="secondary" id="exportJsonBtn" type="button" data-i18n="exportJson">Export JSON</button>
+            <button class="danger" id="logoutBtn" type="button" data-i18n="signOut">Sign out</button>
+          </div>
+        </details>
+        <div class="user-chip"><span id="userInitials">DC</span><div><strong id="userName">Demo Clinician</strong><small id="userMeta">Clinician · Demonstration Site</small></div></div>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="MirrorCoach sections" class="tab-nav" id="tabNav">
+    <div class="tab-nav-inner">
+      <button class="tab-button active" data-i18n="navDashboard" data-roles="clinician,patient,researcher,admin" data-tab="dashboard">Dashboard</button>
+      <button class="tab-button" data-i18n="navPatients" data-roles="clinician,researcher,admin" data-tab="patients">Patients</button>
+      <button class="tab-button" data-i18n="navProtocol" data-roles="clinician,admin" data-tab="prescribe">Protocols</button>
+      <button class="tab-button" data-i18n="navSession" data-roles="clinician,patient,admin" data-tab="session">Session</button>
+      <button class="tab-button" data-i18n="navExercises" data-roles="clinician,patient,researcher,admin" data-tab="exercises">Exercises</button>
+      <button class="tab-button" data-i18n="navLearn" data-roles="clinician,patient,researcher,admin" data-tab="tutorial">Learn</button>
+      <details class="nav-more" id="navMore">
+        <summary data-i18n="navMore">More</summary>
+        <div class="nav-more-menu">
+          <button class="tab-button nav-menu-item" data-i18n="navManual" data-roles="clinician,patient,researcher,admin" data-tab="manual">Operating Manual</button>
+          <button class="tab-button nav-menu-item" data-i18n="navOutcomes" data-roles="clinician,patient,researcher,admin" data-tab="outcomes">Outcomes</button>
+          <button class="tab-button nav-menu-item" data-i18n="navResearch" data-roles="clinician,researcher,admin" data-tab="research">Research</button>
+          <button class="tab-button nav-menu-item" data-i18n="navSettings" data-roles="clinician,admin" data-tab="settings">Settings</button>
+        </div>
+      </details>
+    </div>
+  </nav>
+  <div aria-live="polite" class="app-status" id="appStatus" role="status"></div>
+  <main class="app-shell" id="mainContent" tabindex="-1">
+    <section class="tab-panel active" id="dashboard">
+      <section class="workspace-shell" aria-labelledby="workspaceTitle">
+        <header class="workspace-topbar">
+          <div><p class="workspace-kicker" data-i18n="dashboardKicker">MirrorCoach workspace</p><h2 id="workspaceTitle" data-i18n="dashboardTitle">Clinical command centre</h2><p data-i18n="dashboardHelp">Start with the brief. Open one focused layer when you need supporting detail.</p></div>
+          <label class="workspace-focus"><span data-i18n="reviewFocus">Review focus</span><select aria-label="Filter dashboard by patient" id="dashboardPatientFilter"></select></label>
+        </header>
+        <nav aria-label="Dashboard layers" class="workspace-layer-nav" id="dashboardLayerNav" role="tablist">
+          <button aria-controls="dashboard-command" aria-selected="true" class="active" data-dashboard-layer-target="command" id="dashboardTabCommand" role="tab" type="button"><span>01</span><b data-i18n="layerCommand">Command</b></button>
+          <button aria-controls="dashboard-dose" aria-selected="false" data-dashboard-layer-target="dose" id="dashboardTabDose" role="tab" tabindex="-1" type="button"><span>02</span><b data-i18n="layerDose">Dose</b></button>
+          <button aria-controls="dashboard-safety" aria-selected="false" data-dashboard-layer-target="safety" id="dashboardTabSafety" role="tab" tabindex="-1" type="button"><span>03</span><b data-i18n="layerSafety">Safety</b></button>
+          <button aria-controls="dashboard-cases" aria-selected="false" data-dashboard-layer-target="cases" id="dashboardTabCases" role="tab" tabindex="-1" type="button"><span>04</span><b data-i18n="layerCases">Cases</b></button>
+        </nav>
+        <div class="workspace-stage">
+          <section class="workspace-layer active" data-dashboard-layer="command" id="dashboard-command" role="tabpanel" aria-labelledby="dashboardTabCommand">
+            <section class="dashboard-hero">
+              <div><p class="eyebrow" data-i18n="commandKicker">Today’s RMHT brief</p><h2 data-i18n="commandTitle">Synchronise. Practise. Transfer. Document.</h2><p data-i18n="commandText">MirrorCoach organises clinical readiness, a measurable 30-minute workflow and immediate functional transfer without presenting automated treatment decisions.</p><div class="hero-buttons"><button class="primary compact" data-go="session" data-i18n="startSession">Start guided session</button><button class="secondary compact" data-go="prescribe" data-i18n="openProtocol" data-roles="clinician,admin">Open protocol builder</button></div></div>
+              <img alt="HandVivante sensor glove and robotic hand exoskeleton" src="assets/product-hero.svg"/>
+            </section>
+            <section aria-label="Key programme indicators" class="stats-grid command-metrics">
+              <article class="stat-card"><span data-i18n="metricMinutes">Active RMHT minutes</span><strong id="statMinutes">0</strong><small data-i18n="metricWeek">Current 7-day window</small></article>
+              <article class="stat-card"><span data-i18n="metricCycles">Movement cycles</span><strong id="statReps">0</strong><small data-i18n="metricDocumented">Documented this week</small></article>
+              <article class="stat-card"><span data-i18n="metricSessions">Sessions completed</span><strong id="statSessions">0</strong><small data-i18n="metricCaseload">Across current caseload</small></article>
+              <article class="stat-card"><span data-i18n="metricFlags">Safety review flags</span><strong id="statFlags">0</strong><small data-i18n="metricRules">Rule-based prompts only</small></article>
+            </section>
+            <div class="command-grid">
+              <article class="workspace-card architecture-card">
+                <div class="workspace-card-heading"><div><p class="workspace-kicker" data-i18n="architectureKicker">30-minute workflow</p><h3 data-i18n="architectureTitle">Current session architecture</h3></div><button class="text-button" data-go="session" type="button"><span data-i18n="openSession">Open session</span> <span aria-hidden="true">→</span></button></div>
+                <p class="card-intro" id="architectureHint" data-i18n="architectureHint">Select a phase for clinical sequence, quality gates, documentation and evidence interpretation.</p>
+                <ol aria-describedby="architectureHint" class="architecture-list" id="architectureList">
+                  <li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="safety" type="button"><b>3 min</b><span class="architecture-copy"><strong data-i18n="phaseSafety">Safety &amp; readiness</strong><small data-i18n="phaseSafetySub">Daily go / modify / stop decision</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+                  <li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="calibration" type="button"><b>4 min</b><span class="architecture-copy"><strong data-i18n="phaseCalibration">Calibration &amp; familiarisation</strong><small data-i18n="phaseCalibrationSub">Fit, alignment and synchrony gate</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+                  <li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="priming" type="button"><b>5 min</b><span class="architecture-copy"><strong data-i18n="phasePriming">Sensorimotor priming</strong><small data-i18n="phasePrimingSub">Mirror gaze, motor intent and assisted movement</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+                  <li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="training" type="button"><b>15 min</b><span class="architecture-copy"><strong data-i18n="phaseTraining">Two high-repetition task blocks</strong><small data-i18n="phaseTrainingSub">Purposeful dose with quality and assistance tracking</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+                  <li><button aria-haspopup="dialog" class="architecture-phase" data-architecture="transfer" type="button"><b>3 min</b><span class="architecture-copy"><strong data-i18n="phaseTransfer">Functional transfer &amp; cooldown</strong><small data-i18n="phaseTransferSub">Real-task probe, doffing and post-session review</small></span><span aria-hidden="true" class="architecture-arrow">›</span></button></li>
+                </ol>
+              </article>
+              <article class="workspace-card review-card">
+                <div class="workspace-card-heading"><div><p class="workspace-kicker" data-i18n="reviewKicker">Clinician attention</p><h3 data-i18n="reviewTitle">Priority review prompts</h3></div><button class="text-button" data-dashboard-layer-target="safety" type="button"><span data-i18n="viewAll">View all</span> <span aria-hidden="true">→</span></button></div>
+                <p class="card-intro" data-i18n="reviewHelp">Explainable prompts derived from the current synthetic records.</p>
+                <div class="prompt-list compact-list" id="reviewPrompts"></div>
+              </article>
+            </div>
+          </section>
+          <section class="workspace-layer" data-dashboard-layer="dose" hidden id="dashboard-dose" role="tabpanel" aria-labelledby="dashboardTabDose">
+            <div class="layer-heading"><div><p class="workspace-kicker" data-i18n="doseKicker">Dose intelligence</p><h2 data-i18n="doseTitle">Weekly exposure against prescription</h2><p data-i18n="doseHelp">Active practice minutes are shown against each clinician-set weekly target.</p></div><button class="secondary compact" data-go="session" data-i18n="logSession">Log a session</button></div>
+            <article class="workspace-card dose-workspace"><div class="dose-chart" id="doseChart"></div></article>
+          </section>
+          <section class="workspace-layer" data-dashboard-layer="safety" hidden id="dashboard-safety" role="tabpanel" aria-labelledby="dashboardTabSafety">
+            <div class="layer-heading"><div><p class="workspace-kicker" data-i18n="safetyKicker">Safety and fidelity</p><h2 data-i18n="safetyTitle">Clinical review queue</h2><p data-i18n="safetyHelp">Review prompts support attention; they do not determine eligibility, diagnosis or treatment.</p></div><button class="secondary compact" data-go="research" data-i18n="openRegister" data-roles="clinician,researcher,admin">Open safety register</button></div>
+            <div class="safety-grid"><article class="workspace-card"><div class="prompt-list" id="reviewPromptsFull"></div></article><aside class="workspace-card governance-card"><p class="eyebrow" data-i18n="governanceKicker">Clinical governance</p><h3 data-i18n="governanceTitle">Human review remains the control layer.</h3><p data-i18n="governanceText">Confirm the current IFU, local policy, fit, pain, skin, tone, synchrony and patient communication before and during every session.</p><button class="secondary full" data-go="manual" data-i18n="openManual">Open operating manual</button></aside></div>
+          </section>
+          <section class="workspace-layer" data-dashboard-layer="cases" hidden id="dashboard-cases" role="tabpanel" aria-labelledby="dashboardTabCases">
+            <div class="layer-heading"><div><p class="workspace-kicker" data-i18n="casesKicker">Caseload overview</p><h2 data-i18n="casesTitle">Screening, outcomes and adherence</h2><p data-i18n="casesHelp">Synthetic records only. Formal scale content is not reproduced.</p></div><button class="secondary compact" data-go="patients" data-i18n="manageCases" data-roles="clinician,researcher,admin">Manage cases</button></div>
+            <article class="workspace-card"><div class="table-wrap"><table><thead><tr><th data-i18n="tableCase">Case</th><th data-i18n="tablePathway">Pathway</th><th>Brunnstrom</th><th>MAS</th><th>FMA-UE</th><th>ARAT</th><th data-i18n="tableAdherence">Adherence</th><th data-i18n="tableStatus">Status</th></tr></thead><tbody id="dashboardPatientTable"></tbody></table></div></article>
+          </section>
+        </div>
+      </section>
+    </section>
