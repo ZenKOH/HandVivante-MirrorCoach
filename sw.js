@@ -1,4 +1,4 @@
-const CACHE = 'mirrorcoach-static-v15';
+const CACHE = 'mirrorcoach-static-v16';
 const ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const ASSETS = [
   './css/05-professional.css',
   './css/06-focus-navigation.css',
   './css/07-metric-insights.css',
+  './css/08-welcome-navigation.css',
   './js/00-boot.js',
   './js/01-base.js',
   './js/02-exercises.js',
@@ -26,6 +27,7 @@ const ASSETS = [
   './js/12-international-ui.js',
   './js/13-focus-navigation.js',
   './js/14-metric-insights.js',
+  './js/15-welcome-navigation.js',
   './fragments/00-shell-dashboard.html',
   './fragments/01-clinical-planning.html',
   './fragments/02-session-learning.html',
@@ -44,10 +46,33 @@ const ASSETS = [
   './assets/exercise-bilateral-grasp.webp',
   './assets/exercise-assisted-open-close.webp'
 ];
-self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())));
-self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())));
+
+self.addEventListener('install', event => event.waitUntil(
+  caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+));
+
+self.addEventListener('activate', event => event.waitUntil(
+  caches.keys()
+    .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+    .then(() => self.clients.claim())
+));
+
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then(cache => cache.put('./index.html', copy));
+        }
+        return response;
+      }).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
       if (response.ok && new URL(event.request.url).origin === self.location.origin) {
@@ -55,6 +80,6 @@ self.addEventListener('fetch', event => {
         caches.open(CACHE).then(cache => cache.put(event.request, copy));
       }
       return response;
-    }).catch(() => event.request.mode === 'navigate' ? caches.match('./index.html') : Response.error()))
+    }).catch(() => Response.error()))
   );
 });
