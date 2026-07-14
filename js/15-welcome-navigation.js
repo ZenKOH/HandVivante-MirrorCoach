@@ -2,7 +2,6 @@
   'use strict';
 
   const USER_STORAGE_KEY = 'handVivanteMirrorCoach.user.v1';
-  const initialHash = window.__MIRRORCOACH_INITIAL_HASH__ || location.hash;
   const baseShowLogin = window.showLogin;
   const baseShowApp = window.showApp;
 
@@ -124,9 +123,7 @@
     attributeFilter: ['lang']
   });
 
-  if (initialHash === '#welcome' || !savedUser()) {
-    showWelcome({ replace: true });
-  } else {
-    document.body.dataset.shell = 'workspace';
-  }
+  // Every full document load starts at the public welcome screen.
+  // A saved session only exposes “Return to workspace”; it never bypasses welcome.
+  showWelcome({ replace: true });
 })();
