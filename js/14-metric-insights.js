@@ -221,11 +221,12 @@
       const protocol = getProtocol(session.protocolId) || protocolsForPatient(session.patientId)[0];
       return protocol && N(session.activeMinutes) < N(protocol.minutes);
     });
+    const deviationText = String(shortSession?.deviation || 'not specified').trim().replace(/[.!?]+$/, '');
     const headline = context.plannedMinutes
       ? `${formatNumber(context.minutes)} of ${formatNumber(context.plannedMinutes)} prescribed weekly minutes are documented in the current rolling window (${formatNumber(coverage)}% exposure coverage).`
       : `${formatNumber(context.minutes)} active minutes are documented; there is no weekly prescription target in this scope.`;
     const observation = context.sessions.length
-      ? `${durationMatched} of ${context.sessions.length} completed records met the session-duration field in their linked protocol.${shortSession ? ` The shorter record was ${formatNumber(shortSession.activeMinutes)} minutes and includes the deviation “${E(shortSession.deviation || 'not specified')}”.` : ''}`
+      ? `${durationMatched} of ${context.sessions.length} completed records met the session-duration field in their linked protocol.${shortSession ? ` The shorter record was ${formatNumber(shortSession.activeMinutes)} minutes and includes the deviation “${E(deviationText)}”.` : ''}`
       : 'No completed session records are available for analysis.';
     return `${summaryCards([
       { label: 'Documented exposure', value: `${formatNumber(context.minutes)} min`, note: `${context.sessions.length} completed records` },

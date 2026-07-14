@@ -1,4 +1,4 @@
-const CACHE = 'mirrorcoach-static-v13';
+const CACHE = 'mirrorcoach-static-v14';
 const ASSETS = [
   './',
   './index.html',
