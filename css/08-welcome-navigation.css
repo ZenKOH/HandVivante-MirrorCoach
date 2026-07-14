@@ -1,0 +1,13 @@
+.boot-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 7% 0%,rgba(194,31,71,.09),transparent 28%),
+    radial-gradient(circle at 92% 6%,rgba(194,31,71,.055),transparent 25%),
+    linear-gradient(180deg,#fff 0%,#fff 62%,#fff9fb 100%);
+}
+.resume-workspace{margin-bottom:14px}
+.data-menu-panel #welcomeBtn{width:100%}
+body[data-shell="welcome"] .skip-link{display:none}
