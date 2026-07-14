@@ -19,10 +19,16 @@ SCRIPTS = [
     "js/05-sample-state.js", "js/06-core.js",
     "js/07-patients-protocols.js", "js/08-session.js",
     "js/09-library-tutorial.js", "js/10-manual-outcomes-research.js",
-    "js/11-init.js",
+    "js/11-init.js", "js/12-international-ui.js",
+    "js/13-focus-navigation.js", "js/14-metric-insights.js",
 ]
-REQUIRED = ["index.html", "manifest.webmanifest", "sw.js", ".nojekyll", *FRAGMENTS, *SCRIPTS]
-DYNAMIC_IDS = {"quizResult"}
+STYLES = [
+    "css/01-foundation.css", "css/02-layout.css", "css/03-components.css",
+    "css/04-responsive.css", "css/05-professional.css",
+    "css/06-focus-navigation.css", "css/07-metric-insights.css",
+]
+REQUIRED = ["index.html", "manifest.webmanifest", "sw.js", ".nojekyll", *FRAGMENTS, *SCRIPTS, *STYLES]
+DYNAMIC_IDS = {"quizResult", "metricInsightTitle"}
 
 errors: list[str] = []
 for path in REQUIRED:
@@ -49,9 +55,17 @@ if not errors:
         errors.append(f"Service-worker entries do not exist: {', '.join(missing_cached)}")
 
     index = (ROOT / "index.html").read_text(encoding="utf-8")
-    for path in ["js/00-boot.js", "css/01-foundation.css", "css/02-layout.css", "css/03-components.css", "css/04-responsive.css"]:
+    for path in ["js/00-boot.js", *STYLES]:
         if path not in index:
             errors.append(f"index.html does not reference {path}")
+
+    metric_triggers = re.findall(r'data-metric-insight=["\']([^"\']+)', html)
+    metric_keys = set(metric_triggers)
+    expected_metrics = {"minutes", "cycles", "sessions", "safety"}
+    if metric_keys != expected_metrics or len(metric_triggers) != len(expected_metrics):
+        errors.append(f"Metric drill-down triggers do not match expected set exactly once: {metric_triggers}")
+    if 'id="metricInsightDialog"' not in html:
+        errors.append("Metric insight dialog is missing")
 
 if errors:
     print("MirrorCoach static validation failed:", file=sys.stderr)

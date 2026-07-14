@@ -29,6 +29,7 @@ https://zenkoh.github.io/HandVivante-MirrorCoach/
 - Searchable operating manual based on the supplied brochure and training material.
 - Outcome records for FMA-UE, ARAT, Box and Block Test, Motor Activity Log, patient-specific goals, pain, and locally approved measures.
 - Protocol-fidelity dashboard, deviation/adverse-event log, CSV export, and JSON backup/restore.
+- Click-through analysis for active RMHT minutes, movement cycles, completed sessions, and safety review flags, with rolling seven-day trends, case/session source tables, calculation logic, interpretation guardrails, and evidence links.
 - Responsive layout, installable PWA shell, and offline caching of static assets.
 
 ## Important scope
@@ -98,7 +99,7 @@ for file in js/*.js; do node --check "$file"; done
 python3 tests/validate_static.py
 ```
 
-The GitHub Pages workflow runs these checks before publishing. The validator confirms that required files exist, service-worker cache entries resolve, interface IDs are unique, and static JavaScript element references match the assembled interface.
+The GitHub Pages workflow runs these checks before publishing. The validator confirms that required files exist, service-worker cache entries resolve, interface IDs are unique, static JavaScript element references match the assembled interface, and all four metric drill-down triggers and their shared analysis dialog are present.
 
 ### Reliability fixes included in the reviewed build
 

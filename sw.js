@@ -1,4 +1,4 @@
-const CACHE = 'mirrorcoach-static-v12';
+const CACHE = 'mirrorcoach-static-v13';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   './css/04-responsive.css',
   './css/05-professional.css',
   './css/06-focus-navigation.css',
+  './css/07-metric-insights.css',
   './js/00-boot.js',
   './js/01-base.js',
   './js/02-exercises.js',
@@ -24,6 +25,7 @@ const ASSETS = [
   './js/11-init.js',
   './js/12-international-ui.js',
   './js/13-focus-navigation.js',
+  './js/14-metric-insights.js',
   './fragments/00-shell-dashboard.html',
   './fragments/01-clinical-planning.html',
   './fragments/02-session-learning.html',
