@@ -62,6 +62,17 @@
     return total ? Math.round((N(value) / N(total)) * 100) : 0;
   }
 
+  function plural(value, singular, pluralForm = `${singular}s`) {
+    return N(value) === 1 ? singular : pluralForm;
+  }
+
+  function unitLabel(unit, value) {
+    if (unit === 'sessions') return plural(value, 'session');
+    if (unit === 'cycles') return plural(value, 'cycle');
+    if (unit === 'flags') return plural(value, 'flag');
+    return unit;
+  }
+
   function median(values) {
     if (!values.length) return 0;
     const sorted = values.map(Number).sort((a, b) => a - b);
@@ -130,7 +141,7 @@
       cycles,
       start: days[0]?.key,
       end: days[days.length - 1]?.key,
-      scopeLabel: filter === 'all' ? `Current caseload · ${patients.length} cases` : (patients[0]?.label || 'No case in scope')
+      scopeLabel: filter === 'all' ? `Current caseload · ${patients.length} ${plural(patients.length, 'case')}` : (patients[0]?.label || 'No case in scope')
     };
   }
 
@@ -150,14 +161,14 @@
   function trendChart(context, field, title, unit) {
     const maximum = Math.max(1, ...context.days.map(day => N(day[field])));
     const total = context.days.reduce((sum, day) => sum + N(day[field]), 0);
-    const accessible = context.days.map(day => `${formatDate(day.key)}: ${formatNumber(day[field])} ${unit}`).join('; ');
+    const accessible = context.days.map(day => `${formatDate(day.key)}: ${formatNumber(day[field])} ${unitLabel(unit, day[field])}`).join('; ');
     return `<section class="metric-insight-section">
-      <div class="metric-section-heading"><div><p class="workspace-kicker">Seven-day profile</p><h3>${E(title)}</h3></div><span>${formatNumber(total)} ${E(unit)}</span></div>
+      <div class="metric-section-heading"><div><p class="workspace-kicker">Seven-day profile</p><h3>${E(title)}</h3></div><span>${formatNumber(total)} ${E(unitLabel(unit, total))}</span></div>
       <ol aria-label="${E(accessible)}" class="metric-trend-chart">
         ${context.days.map(day => {
           const value = N(day[field]);
           const height = Math.round((value / maximum) * 100);
-          return `<li title="${E(`${formatDate(day.key, { weekday: 'long', day: 'numeric', month: 'long' })}: ${formatNumber(value)} ${unit}`)}"><strong>${formatNumber(value)}</strong><span class="metric-bar-track"><i class="${value ? '' : 'zero'}" style="--metric-bar:${height}%"></i></span><small>${E(formatDate(day.key, { weekday: 'short' }))}<b>${E(formatDate(day.key))}</b></small></li>`;
+          return `<li title="${E(`${formatDate(day.key, { weekday: 'long', day: 'numeric', month: 'long' })}: ${formatNumber(value)} ${unitLabel(unit, value)}`)}"><strong>${formatNumber(value)}</strong><span class="metric-bar-track"><i class="${value ? '' : 'zero'}" style="--metric-bar:${height}%"></i></span><small>${E(formatDate(day.key, { weekday: 'short' }))}<b>${E(formatDate(day.key))}</b></small></li>`;
         }).join('')}
       </ol>
     </section>`;
@@ -204,7 +215,7 @@
       if (mode === 'sessions') {
         const planned = N(protocol?.frequency);
         const gap = Math.max(0, planned - sessions.length);
-        return `<tr><td><strong>${E(patient.label)}</strong><small>${E(protocol ? `${protocol.frequency} sessions/week` : 'No active prescription')}</small></td><td>${formatNumber(sessions.length)}</td><td>${protocol ? formatNumber(planned) : '—'}</td><td>${protocol ? formatNumber(gap) : '—'}</td><td>${latest ? E(formatDate(latest.date, { day: 'numeric', month: 'short', year: 'numeric' })) : 'No session'}</td><td>${sessions.some(session => session.deviation) ? '<span class="metric-status warning">Documented</span>' : '<span class="metric-status good">None</span>'}</td></tr>`;
+        return `<tr><td><strong>${E(patient.label)}</strong><small>${E(protocol ? `${protocol.frequency} ${plural(protocol.frequency, 'session')}/week` : 'No active prescription')}</small></td><td>${formatNumber(sessions.length)}</td><td>${protocol ? formatNumber(planned) : '—'}</td><td>${protocol ? formatNumber(gap) : '—'}</td><td>${latest ? E(formatDate(latest.date, { day: 'numeric', month: 'short', year: 'numeric' })) : 'No session'}</td><td>${sessions.some(session => session.deviation) ? '<span class="metric-status warning">Documented</span>' : '<span class="metric-status good">None</span>'}</td></tr>`;
       }
       return `<tr><td><strong>${E(patient.label)}</strong></td><td>${formatNumber(sessions.length)}</td><td>${formatNumber(cycles)}</td><td>${actualMinutes ? formatNumber(cycles / actualMinutes, 2) : '—'}</td><td>${E(latest?.initiation || '—')}</td></tr>`;
     });
@@ -226,10 +237,10 @@
       ? `${formatNumber(context.minutes)} of ${formatNumber(context.plannedMinutes)} prescribed weekly minutes are documented in the current rolling window (${formatNumber(coverage)}% exposure coverage).`
       : `${formatNumber(context.minutes)} active minutes are documented; there is no weekly prescription target in this scope.`;
     const observation = context.sessions.length
-      ? `${durationMatched} of ${context.sessions.length} completed records met the session-duration field in their linked protocol.${shortSession ? ` The shorter record was ${formatNumber(shortSession.activeMinutes)} minutes and includes the deviation “${E(deviationText)}”.` : ''}`
+      ? `${durationMatched} of ${context.sessions.length} completed ${plural(context.sessions.length, 'record')} met the session-duration field in their linked protocol.${shortSession ? ` The shorter record was ${formatNumber(shortSession.activeMinutes)} minutes and includes the deviation “${E(deviationText)}”.` : ''}`
       : 'No completed session records are available for analysis.';
     return `${summaryCards([
-      { label: 'Documented exposure', value: `${formatNumber(context.minutes)} min`, note: `${context.sessions.length} completed records` },
+      { label: 'Documented exposure', value: `${formatNumber(context.minutes)} min`, note: `${context.sessions.length} completed ${plural(context.sessions.length, 'record')}` },
       { label: 'Prescribed weekly minutes', value: context.plannedMinutes ? `${formatNumber(context.plannedMinutes)} min` : 'Not set', note: 'Frequency × duration, by case' },
       { label: 'Exposure coverage', value: context.plannedMinutes ? `${formatNumber(coverage)}%` : '—', note: 'Not an outcome measure', tone: coverage >= 80 ? 'good' : '' },
       { label: 'Median active duration', value: durations.length ? `${formatNumber(median(durations), Number.isInteger(median(durations)) ? 0 : 1)} min` : '—', note: 'Per completed record' }
@@ -257,14 +268,14 @@
       return `<tr><td>${E(formatDate(session.date, { day: 'numeric', month: 'short', year: 'numeric' }))}</td><td><strong>${E(patient?.label || session.patientId)}</strong></td><td>${formatNumber(session.reps)}</td><td>${formatNumber(session.activeMinutes)} min</td><td>${formatNumber(perMinute, 2)}</td><td>${E(session.initiation || '—')}</td><td>${E(transfer)}</td></tr>`;
     });
     return `${summaryCards([
-      { label: 'Documented cycles', value: formatNumber(context.cycles), note: `${context.sessions.length} completed records` },
+      { label: 'Documented cycles', value: formatNumber(context.cycles), note: `${context.sessions.length} completed ${plural(context.sessions.length, 'record')}` },
       { label: 'Mean per session', value: context.sessions.length ? formatNumber(mean, 1) : '—', note: 'Arithmetic mean' },
       { label: 'Cycles per active minute', value: context.minutes ? formatNumber(rate, 2) : '—', note: 'Descriptive rate only' },
       { label: 'Session range', value: range, note: 'Lowest–highest recorded count' }
     ])}
-    <section class="metric-analysis-callout"><p class="workspace-kicker">Analytical read</p><h3>${formatNumber(context.cycles)} movement cycles were recorded across ${formatNumber(context.sessions.length)} sessions.</h3><p>The mean was ${formatNumber(mean, 1)} cycles per session and ${formatNumber(rate, 2)} cycles per active minute. The spread should be reviewed alongside pathway, range, assistance, initiation, fidelity and the post-device functional transfer probe.</p></section>
+    <section class="metric-analysis-callout"><p class="workspace-kicker">Analytical read</p><h3>${formatNumber(context.cycles)} movement ${plural(context.cycles, 'cycle')} ${context.cycles === 1 ? 'was' : 'were'} recorded across ${formatNumber(context.sessions.length)} ${plural(context.sessions.length, 'session')}.</h3><p>The mean was ${formatNumber(mean, 1)} cycles per session and ${formatNumber(rate, 2)} cycles per active minute. The spread should be reviewed alongside pathway, range, assistance, initiation, fidelity and the post-device functional transfer probe.</p></section>
     ${trendChart(context, 'cycles', 'Documented movement cycles by day', 'cycles')}
-    <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Source records</p><h3>Cycle volume with quality context</h3></div><span>${context.sessions.length} records</span></div>${table(['Date', 'Case', 'Cycles', 'Active time', 'Cycles/min', 'Initiation', 'Transfer'], sessionRows)}</section>
+    <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Source records</p><h3>Cycle volume with quality context</h3></div><span>${context.sessions.length} ${plural(context.sessions.length, 'record')}</span></div>${table(['Date', 'Case', 'Cycles', 'Active time', 'Cycles/min', 'Initiation', 'Transfer'], sessionRows)}</section>
     <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Case distribution</p><h3>Where the recorded volume came from</h3></div><span>Current scope</span></div>${table(['Case', 'Sessions', 'Cycles', 'Cycles/min', 'Latest initiation'], patientSessionRows(context, 'cycles'), 'No cases in scope.')}</section>
     ${noteGrid(
       `Sum of the manually documented <code>reps</code> field for completed records in the rolling seven-day window. A “cycle” is whatever completed programmed movement sequence the clinician recorded; this prototype does not receive or validate sensor telemetry.`,
@@ -285,7 +296,7 @@
       { label: 'Cadence coverage', value: context.plannedSessions ? `${formatNumber(coverage)}%` : '—', note: 'Requires schedule verification', tone: coverage >= 80 ? 'good' : '' },
       { label: 'Mean active duration', value: context.sessions.length ? `${formatNumber(meanMinutes, 1)} min` : '—', note: `${activeCases}/${context.patients.length || 0} cases represented` }
     ])}
-    <section class="metric-analysis-callout"><p class="workspace-kicker">Analytical read</p><h3>${formatNumber(context.sessions.length)} completed sessions cover ${formatNumber(activeCases)} of ${formatNumber(context.patients.length)} cases in scope.</h3><p>${context.plannedSessions ? `${formatNumber(context.sessions.length)} of ${formatNumber(context.plannedSessions)} prescribed weekly sessions are represented (${formatNumber(coverage)}% cadence coverage).` : 'No prescribed weekly frequency is available for comparison.'} ${deviations ? `${formatNumber(deviations)} completed record${deviations === 1 ? '' : 's'} include${deviations === 1 ? 's' : ''} a documented protocol deviation.` : 'No protocol deviations are documented in these records.'}</p></section>
+    <section class="metric-analysis-callout"><p class="workspace-kicker">Analytical read</p><h3>${formatNumber(context.sessions.length)} completed ${plural(context.sessions.length, 'session')} ${context.sessions.length === 1 ? 'covers' : 'cover'} ${formatNumber(activeCases)} of ${formatNumber(context.patients.length)} ${plural(context.patients.length, 'case')} in scope.</h3><p>${context.plannedSessions ? `${formatNumber(context.sessions.length)} of ${formatNumber(context.plannedSessions)} prescribed weekly sessions are represented (${formatNumber(coverage)}% cadence coverage).` : 'No prescribed weekly frequency is available for comparison.'} ${deviations ? `${formatNumber(deviations)} completed record${deviations === 1 ? '' : 's'} include${deviations === 1 ? 's' : ''} a documented protocol deviation.` : 'No protocol deviations are documented in these records.'}</p></section>
     ${trendChart(context, 'sessions', 'Completed session records by day', 'sessions')}
     <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Caseload review</p><h3>Completed cadence against prescription</h3></div><span>Current scope</span></div>${table(['Case', 'Completed', 'Prescribed', 'Unrepresented', 'Latest record', 'Deviation'], patientSessionRows(context, 'sessions'), 'No cases in scope.')}</section>
     ${noteGrid(
@@ -331,7 +342,7 @@
     ])}
     <section class="metric-analysis-callout ${context.flags.length ? 'risk' : 'good'}"><p class="workspace-kicker">Analytical read</p><h3>${context.flags.length ? `${formatNumber(context.flags.length)} rule-based prompt${context.flags.length === 1 ? '' : 's'} require human review.` : 'No configured dashboard rule is currently triggered.'}</h3><p>Zero flags is not a finding of zero risk. It means only that the six rules below did not trigger from the fields currently available. ${E(deviationMessage)} Safety-register entries, device vigilance and clinical escalation remain separate processes.</p></section>
     <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Rule transparency</p><h3>What the flag counter actually checks</h3></div><span>${ruleDefinitions.length} configured rules</span></div>${table(['Review domain', 'Trigger logic', 'Current result'], ruleRows)}</section>
-    <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Case review</p><h3>Signals visible in the current records</h3></div><span>${context.sessions.length} sessions reviewed</span></div>${table(['Case', 'Rule result', 'Latest pain', 'Faults', 'Deviations', 'Register entries'], patientRows, 'No cases in scope.')}</section>
+    <section class="metric-insight-section"><div class="metric-section-heading"><div><p class="workspace-kicker">Case review</p><h3>Signals visible in the current records</h3></div><span>${context.sessions.length} ${plural(context.sessions.length, 'session')} reviewed</span></div>${table(['Case', 'Rule result', 'Latest pain', 'Faults', 'Deviations', 'Register entries'], patientRows, 'No cases in scope.')}</section>
     ${noteGrid(
       'The counter is the number of non-good prompts returned by the current deterministic rules for cases in scope. It is not the count of adverse events, all deviations, device incidents or regulatory reports. Safety-register entries are counted separately and only when dated in this seven-day window.',
       'Continue clinician-led checks before and during every session. Apply the current manufacturer IFU, local policy and jurisdiction-specific incident escalation/reporting process. This prototype does not determine causality, severity, reportability or device safety.'
@@ -355,7 +366,7 @@
     if (!content) return;
     content.innerHTML = `<header class="metric-insight-header">
       <div><p class="eyebrow">Metric review · rolling seven-day window</p><h2 id="metricInsightTitle" tabindex="-1">${E(title)}</h2><p>${E(context.scopeLabel)} · ${E(formatDate(context.start, { day: 'numeric', month: 'short', year: 'numeric' }))}–${E(formatDate(context.end, { day: 'numeric', month: 'short', year: 'numeric' }))}. Synthetic local records only.</p></div>
-      <div class="metric-insight-total"><strong>${formatNumber(value)}</strong><span>${E(METRIC_UNITS[metric])}</span></div>
+      <div class="metric-insight-total"><strong>${formatNumber(value)}</strong><span>${E(unitLabel(METRIC_UNITS[metric], value))}</span></div>
     </header>${metricBody(metric, context)}`;
   }
 
